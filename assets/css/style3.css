@@ -1,0 +1,118 @@
+#smallscreens{
+	display: none;
+	
+}
+#bigscreens{
+	display:block;
+}
+li{
+	width: 110px;
+}
+a{
+	text-align: center;
+}
+#ul-smallscreen1,#ul-smallscreen2,#ul-smallscreen3{
+	display: none;
+}
+#wrapper-hollywood{
+	background-color: linear-gradient(to right,#0c0303,#282020);
+	position: absolute;
+	top: 180px;
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	z-index: -10;
+	justify-content: center;
+	flex-wrap: wrap;
+	
+}
+#wrapper-bollywood{
+	background-color: linear-gradient(to right,#0c0303,#282020);
+	position: absolute;
+	top: 500px;
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	z-index: -10;
+	justify-content: center;
+	flex-wrap: wrap;
+	
+}
+#wrapper-nollywood{
+	background-color: linear-gradient(to right,#0c0303,#282020);
+	position: absolute;
+	top: 800px;
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	z-index: -10;
+	justify-content: center;
+	flex-wrap: wrap;
+	
+}
+#child{
+	width: 200px;
+	height: 200px;
+	background-color: #e0d9d9;
+	margin: 10px;
+	color: red;	
+	cursor: pointer;
+}
+#holly-h1{
+	color:#ffbb00;
+	margin: 10px;
+	position: absolute;
+	top: 100px;
+	z-index: -10;
+	text-align: center;
+}
+#bolly-h1{
+	color:#ffbb00;
+	margin: 10px;
+	position: absolute;
+	top: 450px;
+	z-index: -10;
+}
+#nolly-h1{
+	color:#ffbb00;
+	margin: 10px;
+	position: absolute;
+	top: 750px;
+	z-index: -10;
+}
+#ll{
+	float: right;
+	color:blue;
+	position: absolute;
+	right: 10px;
+}
+#formsearch{
+	float: right;
+	position: absolute;
+	top: 110px;
+	right: 0;
+	z-index: -2;
+}
+img{
+	height: 180px;
+	width: 200px;
+	width: 1fr 1fr 1fr;
+}
+figcaption{
+	font-size: 15px;
+	text-align: center;
+	color: #ffbb00;
+	background-color: linear-gradient(to right,#0c0303,#282020);
+	font-family: "Noto Sans";
+}
+#holly-h1{
+	color:#ffbb00;
+	margin: 10px;
+	position: absolute;
+	top: 120px;
+	z-index: -10;
+	text-align: center;
+}
+#movie-img{
+	width: 329px;
+}

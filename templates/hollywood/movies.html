@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+	<title>Movie Gist</title>
+	<link type="text/css" rel="stylesheet" href="{% static 'css/bootstrap.css' %}" />
+	<link type="text/css" rel="stylesheet" href="{% static 'css/style.css' %}" />
+	<link type="text/css" media="screen and (max-width: 700px)" rel="stylesheet" href="{% static 'css/style2.css' %}" />
+    <link type="text/css" media="screen and (min-width: 701px) and (max-width: 1200px)" rel="stylesheet" href="{% static 'css/style3.css' %}" />
+    <style>
+        @media(max-width: 700px){
+            #pagination{
+                bottom:0vh;
+                position:fixed;
+                background-color: white;
+                right: 10px;
+                width: 30%;
+            }
+        }
+    </style>
+</head>
+<body>
+	<!-- header -->
+	<header><a href="{% url 'index' %}">MovieGist</a></header>
+
+	<!-- navbar -->
+	<div >
+	<ul id="bigscreens">
+		<li >
+			<!-- dropdowns -->
+			<a href="{% url 'Mform' %}" id="">Upload movie for discuss</a>
+		</li>
+		{% if user.is_authenticated %}
+			<li>
+				<li><a href="{% url 'index' %}" id="login">welcome, {{ user.username }}</a></li>
+				<li style="background-color:#e2d3d3;">
+					<a href="javascript:{$('#logout').submit()}" style="">logout</a>
+					<form id="logout" method="POST" action="{% url 'logout' %}">
+						{% csrf_token %}
+						<input type="hidden">
+					</form>
+				</li>
+			</li>
+		{% else %}
+		<li>
+			<li><a href="{% url 'login' %}" id="login">Login</a></li>
+			<li><a href="{% url 'register' %}" id="reg" style="position: absolute;right:100px;">Register</a></li>
+		</li>
+		{% endif %}
+	</ul>
+	<!-- navbar -- mobile phones -->
+	<ul id="smallscreens">
+		<li ><a href="{% url 'Mform' %}" id="">Upload movie for discuss</a></li>
+        {% if user.is_authenticated %}
+			<li>
+				<li><a href="{% url 'index' %}" id="login">welcome, {{ user.username }}</a></li>
+			</li>
+		{% else %}
+		<li>
+			<li><a href="{% url 'login' %}" id="login">Login</a></li>
+			<li><a href="{% url 'register' %}" id="reg" style="position: absolute;right:100px;">Register</a></li>
+		</li>
+		{% endif %}
+	</ul>
+	</div>
+	<!-- search button -->
+	<form method="get" id="formsearch" action="{% url 'search' %}" >
+		<input type="search" name="name" placeholder="search movie" maxlength="20" value="{{values.name}}">
+		<input type="submit" name="submit" id="submit">
+	</form>
+	<!-- hollywood movie list -->
+	<div class="container" id="movie-con">
+        {% if movies %}
+            {% for movie in movies %}
+            <div id="movie">
+                <div>
+                    <figure>
+                        <a href="{% url 'hmovie' movie.id  %}"><img src='{{movie.image.url}}' id="movie-img"></a>
+                        <figcaption><a href="{% url 'hmovie' movie.id  %}">{{movie.name}}</a></figcaption>
+                    </figure>
+                </div>
+                <div id="desc">
+                    <i> Your Description:</i>
+                    <p >
+                        {{movie.description}}
+                    </p>
+                    <button class="btn btn-success">like</button> <i>{{movie.likes}}</i>
+				    <button class="btn btn-danger">dislike</button> <i>{{movie.dislikes}}</i>
+                </div>
+            </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+    <div  id="pagination">
+        <nav aria-label="Page navigation example">
+            {% if myelectronics.has_other_pages %}
+                <ul class="pagination">
+                {% if myelectronics.has_previous %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{electronics.previous_page_number}}" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                
+                {% else %}
+                <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+                {% endif %}
+                {% for i in myelectronics.paginator.page_range %}
+                    {% if myelectronics.number == i %}
+                        <li class="page-item"><a class="page-link" >{{i}}</a></li>
+                    {% else %}
+                        <li class="page-item"><a class="page-link" href="?page={{i}}">{{i}}</a></li>
+                    {% endif %}
+                {% endfor %}
+                </ul>
+            {% endif %}
+        </nav>
+    </div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="{% static  'script/jquery-3.4.1.min.js' %}"></script>
+<script src="{% static 'script/script.js' %}"></script>
+<script src="{% static 'script/bootstrap.bundle.js' %}"></script>
+</html>

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div style="position: absolute;top:220px;width: 40%;z-index:-10">
+    {% if hmovies %}
+        {% for movie in hmovies %}
+            <li style="list-style-type:none;width:100%">
+                <figure>
+                    <img src="{{movie.image.url}}">
+                    <figcaption><a href="{% url 'hmovie' movie.id  %}" style="text-align: left;">{{movie.name}}</a></figcaption>
+                </figure>
+            </li>
+        {% endfor %}
+    {% else %}
+        <h1 style="color: brown;"> No movie with that name</h1>
+    {% endif %}
+</div>
+{% endblock %}

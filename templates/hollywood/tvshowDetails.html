@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+	<title>Movie Gist</title>
+	<link type="text/css" rel="stylesheet" href="{% static 'css/bootstrap.css' %}" />
+	<link type="text/css" rel="stylesheet" href="{% static 'css/style.css' %}" />
+	<link type="text/css" media="screen and (max-width: 700px)" rel="stylesheet" href="{% static 'css/style2.css' %}" />
+	<link type="text/css" media="screen and (min-width: 701px) and (max-width: 1200px)" rel="stylesheet" href="{% static 'css/style3.css' %}" />
+	<style>
+		@media(max-width: 700px){
+			#movie-con{
+				position: absolute;
+				z-index: -1;
+				margin: 20px;
+				height: 300px;
+			}
+			#desc{
+				overflow: auto;
+				height: 200px;
+			}
+			#chat-box{
+				width: 100%;
+				height: 800px;
+				overflow: auto;
+				top: 400px;
+				position: absolute;
+			}
+			#textarea{
+				padding: 10px;
+			}
+		}
+		#like-form{
+			display: inline-block;
+		}
+	</style>
+</head>
+<body>
+	<!-- header -->
+	<header><a href="{% url 'index' %}">MovieGist</a></header>
+
+	<!-- navbar -->
+	<div >
+		<ul id="bigscreens">
+			<li >
+				<!-- dropdowns -->
+				<a href="{% url 'htvshows' %}" id="Hollywood">Back</a>
+			</li>
+			{% if user.is_authenticated %}
+				<li>
+					<li><a href="{% url 'index' %}" id="login">welcome, {{ user.username }}</a></li>
+					<li>
+						<a href="javascript:{$('#logout').submit()}" style="">logout</a>
+						<form id="logout" method="POST" action="{% url 'logout' %}">
+							{% csrf_token %}
+							<input type="hidden">
+						</form>
+					</li>
+				</li>
+			{% else %}
+			<li>
+				<li><a href="{% url 'login' %}" id="login">Login</a></li>
+				<li><a href="{% url 'register' %}" id="reg" style="position: absolute;right:100px;">Register</a></li>
+			</li>
+			{% endif %}
+		</ul>
+		<!-- navbar -- mobile phones -->
+		<ul id="smallscreens">
+			<li ><a href="#" id="">Upload tvshow for discuss</a></li>	
+			{% if user.is_authenticated %}
+				<li>
+					<li><a href="{% url 'index' %}" id="login">welcome, {{ user.username }}</a></li>
+				</li>
+			{% else %}
+			<li>
+				<li><a href="{% url 'login' %}" id="login">Login</a></li>
+				<li><a href="{% url 'register' %}" id="reg" style="position: absolute;right:100px;">Register</a></li>
+			</li>
+			{% endif %}
+		</ul>
+	</div>
+	<!-- movie details -->
+	<div class="container" id="movie-con">
+		<div id="movie">
+			<div>
+				<figure>
+					<img src='{{tvshow.image.url}}' id="movie-img">
+					<figcaption style="text-align: center;">{{tvshow.name}}</figcaption>
+				</figure>
+			</div>
+			<div id="desc">
+				<i> Your Description:</i>
+				<p >{{tvshow.description}}</p>
+				<button class="btn btn-success">like</button> <i>{{tvshow.like_counts}}</i>
+				<button class="btn btn-danger">dislike</button> <i>{{tvshow.dislike_counts}}</i>
+			</div>
+		</div>
+	</div>
+	<!-- chatbox -->
+	<div id="chat-box">
+		{% if gist %}
+		{% for comments in gist %}
+		<i>{{comments.user}}:</i>
+		<p>{{ comments.gists }}</p>
+		{% if user.is_authenticated %}
+		<form action="" method="get" id="like-form">
+			<input type="hidden" name="like">
+			<button class="btn btn-success btn-sm"  type="submit" id="like-button">like</button> <i>{{ comments.gist_like_counts}}</i>
+		</form>
+		<form action="" method="get" id="like-form">
+			<input type="hidden" name="dislike">
+			<button class="btn btn-danger btn-sm" type="submit">dislike</button> <i>{{ comments.gist_dislike_counts }}</i>
+		</form><br>
+		{% else %}
+		<form action="{% url 'login' %}" method="get" id="like-form">
+			<input type="hidden" name="like">
+			<button class="btn btn-success btn-sm"  type="submit" id="like-button">like</button> <i>{{ comments.gist_like_counts}}</i>
+		</form>
+		<form action="{% url 'login' %}" method="get" id="like-form">
+			<input type="hidden" name="dislike">
+			<button class="btn btn-danger btn-sm" type="submit">dislike</button> <i>{{ comments.gist_dislike_counts }}</i>
+		</form><br>
+		{% endif %}
+		{% endfor %}
+		{% endif %}
+	</div>
+	<!-- chatform -->
+	<div id="chat-form">
+		<form method="post" action="{% url 'htvshow' tvshow.id  %}" id="chat" enctype="multipart/form-data">
+			{% csrf_token %}
+			<textarea  name="gist" id="input-gist" placeholder="" id="textarea" value="" style="padding: 10px;" ></textarea>
+			<input type="submit" name="submit" class="btn btn-success btn-lg" value="gist" id="submit-chat">
+		</form>	
+	</div>
+</body>
+<footer>
+	<p style="color: blue;">the footer</p>
+</footer>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="{% static  'script/jquery-3.4.1.min.js' %}"></script>
+<script src="{% static 'script/script.js' %}"></script>
+<script src="{% static 'script/bootstrap.bundle.js' %}"></script>
+<script>
+	$(function(){
+		setTimeout(function(){
+			$('#message').fadeOut('slow');
+		}, 2000);
+		$('#like-button').click(function(){
+			$(this).attr({'class':'disabled'});
+		});
+	});
+</script>
+</html>

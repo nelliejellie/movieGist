@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html>
+<head>
+	<title>Movie Gist</title>
+	<link type="text/css" rel="stylesheet" href="{% static 'css/bootstrap.css' %}" />
+	<link type="text/css" rel="stylesheet" href="{% static 'css/style.css' %}" />
+	<link type="text/css" media="screen and (max-width: 700px)" rel="stylesheet" href="{% static 'css/style2.css' %}" />
+	<link type="text/css" media="screen and (min-width: 701px) and (max-width: 1200px)" rel="stylesheet" href="{% static 'css/style3.css' %}" />
+</head>
+<body>
+	<!-- header -->
+	<header><a href="{% url 'index' %}">MovieGist</a></header>
+
+	<!-- navbar -->
+	<div >
+	<ul id="bigscreens">
+		<li >
+			<!-- dropdowns -->
+			<a href="{% url 'hmovies' %}" id="Hollywood">Hollywood</a>
+			<ul id="hlist">
+				<li><a href="{% url 'hmovies' %}" id="Movies" >Movies</a></li>
+				<li><a href="{% url 'htvshows' %}" id="Tvs">Tv Series</a></li>
+			</ul>
+		</li>
+		<li>
+			<a href="#" id="Nollywood">Nollywood</a>
+			<ul id="nlist">
+				<li><a href="#" id="Movies" >Movies</a></li>
+				<li><a href="#" id="Tvs">Tv Series</a></li>
+			</ul>
+		</li>
+		<li>
+			<a href="#" id="bollywood">Bollywood</a>
+			<ul id="blist">
+				<li><a href="#" id="Moviess" >Movies</a></li>
+				<li><a href="#" id="Tvs">Tv Series</a></li>
+			</ul>
+		</li>
+		{% if user.is_authenticated %}
+			<li>
+				<li><a href="{% url 'index' %}" id="login">welcome, {{ user.username }}</a></li>
+				<li style="background-color:#e2d3d3;">
+					<a href="javascript:{$('#logout').submit()}" style="">logout</a>
+					<form id="logout" method="POST" action="{% url 'logout' %}">
+						{% csrf_token %}
+						<input type="hidden">
+					</form>
+				</li>
+			</li>
+		{% else %}
+		<li>
+			<li><a href="{% url 'login' %}" id="login">Login</a></li>
+			<li><a href="{% url 'register' %}" id="reg" style="position: absolute;right:100px;">Register</a></li>
+		</li>
+		{% endif %}
+	</ul>
+	<!-- navbar -- mobile phones -->
+	<ul id="smallscreens">
+		<li >Menu
+			<ul>
+				<li>
+					<a href="{% url 'hmovies' %}" id="Hollywood-smallscreen">Hollywood</a>	
+					<ul id="ul-smallscreen1">
+						<li><a href="{% url 'hmovies' %}" >Movies</a></li>
+						<li><a href="#" >Tv series</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="#" id="Nollywood-smallscreen">Bollywood</a>
+					<ul id="ul-smallscreen2">
+						<li><a href="#" >Movies</a></li>
+						<li><a href="#" >Tv series</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="#" id="Bollywood-smallscreen">Nollywood</a>
+					<ul id="ul-smallscreen3">
+						<li><a href="#" >Movies</a></li>
+						<li><a href="#" >Tv series</a></li>
+					</ul>
+				</li>
+				{% if user.is_authenticated %}
+				<li>
+					<a href="javascript:{$('#logout').submit()}" style="">logout</a>
+					<form id="logout" method="POST" action="{% url 'logout' %}">
+						{% csrf_token %}
+						<input type="hidden">
+					</form>
+				</li>
+				{% endif %}
+			</ul>
+		</li>
+		{% if user.is_authenticated %}
+			<li>
+				<li><a href="{% url 'index' %}" id="login">welcome, {{ user.username }}</a></li>
+				
+			</li>
+		{% else %}
+		<li>
+			<li><a href="{% url 'login' %}" id="login">Login</a></li>
+			<li><a href="{% url 'register' %}" id="reg" style="position: absolute;right:100px;">Register</a></li>
+		</li>
+		{% endif %}
+	</ul>
+	</div>
+	<!-- search button -->
+	<form method="get" id="formsearch"  >
+		<input type="search" name="searcher" placeholder="search movie" maxlength="20">
+		<input type="submit" name="submit" id="submit">
+	</form>
+	<!-- movie images -->
+	{% block content %} {% endblock %}
+</body>
+<footer>
+	<div class="row">
+			<div class="col-4">
+				<i>send us an email at:</i>
+				<span>emekaewelike@gmail.com</span>
+			</div>
+			<div class="col-4">
+				<i>Phone no:</i>
+				<span>08143291888</span>
+			</div>
+			<div class="col-4">
+				<i>Address:</i>
+				<span></span>
+			</div>
+		</div>
+	</div>
+</footer>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="{% static  'script/jquery-3.4.1.min.js' %}"></script>
+<script src="{% static 'script/script.js' %}"></script>
+<script src="{% static 'script/bootstrap.bundle.js' %}"></script>
+<script>
+	setTimeout(function(){
+		$('#message').fadeOut('slow');
+	}, 2000);
+</script>
+</html>

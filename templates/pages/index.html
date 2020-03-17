@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+
+    {% block content %}
+	<!-- movie images -->
+	<h1 id="holly-h1">Hollywood</h1>
+	{% include 'partials/_alerts.html' %}
+	<div id="wrapper-hollywood">
+		{% if hmovies %}
+			{% for movie in hmovies %}
+			<a href="{% url 'hmovie' movie.id %}">
+			<figure id="child">
+				<img src='{{movie.image.url}}'>
+				<figcaption>{{movie.name}}</figcaption>
+			</figure>
+			</a>
+			{% endfor %}
+		{% else %}
+		<h1>No movies available</h1>
+		{% endif %}
+	</div>
+	<h1 id="bolly-h1">Bollywood</h1>
+	<div id="wrapper-bollywood">
+		<figure id="child">
+			<img src="">
+			<figcaption></figcaption>
+		</figure>
+		<figure id="child">
+			<img src="">
+			<figcaption></figcaption>
+		</figure>
+		<figure id="child">
+			<img src="">
+			<figcaption></figcaption>
+		</figure>
+	</div>
+	<h1 id="nolly-h1">Nollywood</h1>
+	<div id="wrapper-nollywood">
+		<figure id="child">
+			<img src="">
+			<figcaption></figcaption>
+		</figure>
+		<figure id="child">
+			<img src="">
+			<figcaption></figcaption>
+		</figure>
+		<figure id="child">
+			<img src="">
+			<figcaption></figcaption>
+		</figure>
+	</div>
+{% endblock %}
+	
+</body>
+</footer>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="script/jquery-3.4.1.min.js"></script>
+<script src="script/script.js"></script>
+<script src="script/bootstrap.bundle.js"></script>
+</html>

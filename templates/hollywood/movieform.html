@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    
+</head>
+<body>
+    {% block content %}
+    <style>
+        label{
+            color:#F9F9F9;
+        }
+        i{
+            color: black;
+        }
+        @media(max-width: 700px){
+            textarea{
+                width: 200px;
+            }
+        }
+    </style>
+    <div class="container" id="form-container" style="background-color:#8594b2;margin:20px;">
+        <h5>create your movie thread</h5>
+        <form method="POST" enctype="multipart/form-data" action="" >
+        {% csrf_token %}
+            <div style="margin-top: 20px;">
+            <label for="{{form.name.id_for_label}}" style="color:black;">Name:</label><br>
+                {{ form.name }}
+                <br>
+                <br>
+            </div>
+            <div>  
+            <label for="{{form.date.id_for_label}}" style="color:black;">Date:</label><br>
+                {{ form.date }}<i>yyyy-mm-dd</i>
+                <br>
+                <br>  
+            </div>
+            <div>
+            <label for="{{form.description.id_for_label}}" style="color:black;">Description:</label><br>
+                {{ form.description }}
+            </div>
+            <div>
+            <label for="{{form.description.id_for_label}}" style="color:black;">Release Year:</label><br>
+                {{ form.year_of_release }}
+            </div>
+            <div>
+            <label for="{{form.image.id_for_label}}" style="color:black;">Image: </label><br>
+                {{ form.image }}
+                <br>
+                <br>
+            </div>
+            <div style="margin-bottom: 20px;">
+                <button type="submit" class="btn btn-primary btn-lg" value="post">Post</button>
+            </div>
+        </form>   
+    </div>
+    {% endblock %}
+</body>
+</html>
