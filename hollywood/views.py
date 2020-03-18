@@ -33,36 +33,32 @@ def htvshow(request,htvshow_id):
     tvshow = get_object_or_404(Tvshows, pk= htvshow_id)
     comment = tvshowgist.objects.filter(tvshow=tvshow)
     if request.method == 'POST':
-        gists = request.POST['gist']
-        g = tvshowgist(gists=gists, user=request.user, tvshow=tvshow)
-        g.save()
-        messages.success(request,'your comment was added succesfully')
-        return redirect('/htvshows/'+str(htvshow_id)) 
+        if request.POST.get('movieGist') == 'worth-seeing':
+            gists = request.POST['gist']
+            print(request.POST.get('worth-seeing'))
+            g = tvshowgist(gists=gists, user=request.user, tvshow=tvshow, worth_seeing=request.POST.get('movieGist'))
+            g.save()
+            messages.success(request,'your comment was added succesfully')
+            return redirect('/htvshows/'+str(htvshow_id))
+        elif request.POST.get('movieGist') == 'not-worth-seeing':
+            gists = request.POST['gist']
+            print(request.POST.get('worth-seeing'))
+            g = tvshowgist(gists=gists, user=request.user, tvshow=tvshow, not_worth_seeing=request.POST.get('movieGist'))
+            g.save()
+            messages.success(request,'your comment was added succesfully')
+            return redirect('/htvshows/'+str(htvshow_id))
     context = {
         'tvshow': tvshow,
         'gist':comment
-    }
-    if 'like' in request.GET:
-        like = request.GET['like']
-        context = {
-        'tvshow': tvshow,
-        'gist':comment
-        }
-        for val in comment:
-            tvshowgist.objects.filter(pk=val.id).update(gist_like_counts=F('gist_like_counts')+1)
-        return redirect('/htvshows/'+str(htvshow_id))
-    elif 'dislike' in request.GET:
-        dislike = request.GET['dislike']
-        context = {
-        'tvshow': tvshow,
-        'gist':comment
-        }
-        for val in comment:
-            tvshowgist.objects.filter(pk=val.id).update(gist_dislike_counts=F('gist_dislike_counts')+1)
-        return redirect('/htvshows/'+str(htvshow_id))
-
+    }       
     return render(request,'hollywood/tvshowDetails.html', context)
-    
+
+def htvshowLike(request):
+    gist = get_object_or_404(tvshowgist,id=request.POST.get('comment_id'))
+    print(type(request.user))
+    gist.gist_like.add(request.user)
+    return HttpResponseRedirect(gist.get_absolute_url())
+   
 def hmovie(request,hmovie_id):
     movie = get_object_or_404(Movies, pk= hmovie_id)
     comment = gist.objects.filter(movie=movie)

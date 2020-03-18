@@ -101,9 +101,26 @@
 		{% if gist %}
 		{% for comments in gist %}
 		<i>{{comments.user}}:</i>
-		<p>{{ comments.gists }}
-			<br><small><i><span style="color: #49d32a;">{{comments.user}}</span> thinks it's {% if comments.worth_seeing is not None %}<span style="color: blue;">{{comments.worth_seeing}}</span>{% endif %}{% if comments.not_worth_seeing is not None %}<span style="color: red;">{{comments.not_worth_seeing}}</span>{% endif %}</i></small>
-		</p>
+		<p>{{ comments.gists }}</p>
+		{% if user.is_authenticated %}
+		<form action="" method="get" id="like-form">
+			<input type="hidden" name="like">
+			<button class="btn btn-success btn-sm"  type="submit" id="like-button">like</button> <i>{{ comments.gist_like_counts}}</i>
+		</form>
+		<form action="" method="get" id="like-form">
+			<input type="hidden" name="dislike">
+			<button class="btn btn-danger btn-sm" type="submit">dislike</button> <i>{{ comments.gist_dislike_counts }}</i>
+		</form><br>
+		{% else %}
+		<form action="{% url 'login' %}" method="get" id="like-form">
+			<input type="hidden" name="like">
+			<button class="btn btn-success btn-sm"  type="submit" id="like-button">like</button> <i>{{ comments.gist_like_counts}}</i>
+		</form>
+		<form action="{% url 'login' %}" method="get" id="like-form">
+			<input type="hidden" name="dislike">
+			<button class="btn btn-danger btn-sm" type="submit">dislike</button> <i>{{ comments.gist_dislike_counts }}</i>
+		</form><br>
+		{% endif %}
 		{% endfor %}
 		{% endif %}
 	</div>
@@ -111,9 +128,7 @@
 	<div id="chat-form">
 		<form method="post" action="{% url 'htvshow' tvshow.id  %}" id="chat" enctype="multipart/form-data">
 			{% csrf_token %}
-			<div style="text-align: right;margin-right: 30px;"><input type="radio" name="movieGist" value="worth-seeing" id="gh"><i>Worth-seeing</i></div>
-			<div style="text-align: right;margin-right: 30px;"><input type="radio" name="movieGist" value="not-worth-seeing" id="gp"><i>Not-Worth-seeing</i></div>
-			<textarea  name="gist" id="input-gist" placeholder="" id="textarea" value="big things" style="padding: 10px;" ></textarea>
+			<textarea  name="gist" id="input-gist" placeholder="" id="textarea" value="" style="padding: 10px;" ></textarea>
 			<input type="submit" name="submit" class="btn btn-success btn-lg" value="gist" id="submit-chat">
 		</form>	
 	</div>
