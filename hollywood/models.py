@@ -36,13 +36,13 @@ class Tvshows(models.Model):
 
 class gist(models.Model):    
     gists = models.TextField(max_length=300,null=True)
-    gist_like_counts = models.IntegerField(default=0)
-    gist_dislike_counts = models.IntegerField(default=0)
-    gist_like = models.BooleanField(default=False)
-    gist_dislike = models.BooleanField(default=False)
+    gist_like = models.ManyToManyField(User, blank=True, related_name='hmovie_likes')
+    gist_dislike = models.ManyToManyField(User, blank=True, related_name='hmovie_dislikes')
     movie = models.ForeignKey(Movies, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     date = models.DateTimeField(default=datetime.now, blank=True)
+    worth_seeing = models.BooleanField(default=False,null=True, blank=True)
+    not_worth_seeing = models.BooleanField(default=False,null=True, blank=True)
 
 
     def __str__(self):
@@ -50,14 +50,15 @@ class gist(models.Model):
 
 class tvshowgist(models.Model):    
     gists = models.TextField(max_length=300,null=True)
-    gist_like_counts = models.IntegerField(default=0)
-    gist_dislike_counts = models.IntegerField(default=0)
-    gist_like = models.BooleanField(default=False)
-    gist_dislike = models.BooleanField(default=False)
+    gist_like = models.ManyToManyField(User, blank=True, related_name='htvshow_likes')
+    gist_dislike = models.ManyToManyField(User, blank=True, related_name='htvshow_dislikes')
     tvshow = models.ForeignKey(Tvshows, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     date = models.DateTimeField(default=datetime.now, blank=True)
+    worth_seeing = models.CharField(max_length=20,null=True, blank=True)
+    not_worth_seeing = models.CharField(max_length=20,null=True, blank=True)
+
 
 
     def __str__(self):
-        return self.gists
+        return str(self.gists)

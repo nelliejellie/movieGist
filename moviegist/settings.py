@@ -32,7 +32,6 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
-    'gist.apps.GistConfig',
     'hollywood.apps.HollywoodConfig',
     'pages.apps.PagesConfig',
     'django.contrib.admin',
