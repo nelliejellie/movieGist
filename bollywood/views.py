@@ -10,7 +10,7 @@ from django.db.models import F
 
 
 # Create your views here.
-def hmovies(request):
+def bmovies(request):
     movies = Movies.objects.all()
     paginator = Paginator(movies, 10)
     page = request.GET.get('page')
@@ -18,9 +18,9 @@ def hmovies(request):
     context = {
         'movies':paged_movies,
     }
-    return render(request,'hollywood/movies.html', context)
+    return render(request,'bollywood/movies.html', context)
 
-def htvshows(request):
+def btvshows(request):
     tvshows = Tvshows.objects.order_by('-date')
     paginator = Paginator(tvshows, 10)
     page = request.GET.get('page')
@@ -28,9 +28,9 @@ def htvshows(request):
     context = {
         'tvshows':paged_tvshows,
     }
-    return render(request,'hollywood/tvshows.html', context)
-def htvshow(request,htvshow_id):
-    tvshow = get_object_or_404(Tvshows, pk= htvshow_id)
+    return render(request,'bollywood/tvshows.html', context)
+def btvshow(request,btvshow_id):
+    tvshow = get_object_or_404(Tvshows, pk= btvshow_id)
     comment = tvshowgist.objects.filter(tvshow=tvshow)
     like = Like.objects.filter(tvshow=tvshow)
     dislike = Dislike.objects.filter(tvshow=tvshow)
@@ -43,7 +43,7 @@ def htvshow(request,htvshow_id):
             l= Like(user=request.user, tvshow=tvshow)
             l.save()
             messages.success(request,'your comment was added succesfully')
-            return redirect('/htvshows/'+str(htvshow_id))
+            return redirect('/btvshows/'+str(btvshow_id))
         elif request.POST.get('movieGist') == 'not-worth-seeing':
             gists = request.POST['gist']
             print(request.POST.get('worth-seeing'))
@@ -52,22 +52,22 @@ def htvshow(request,htvshow_id):
             dl = Dislike(user=request.user, tvshow=tvshow)
             dl.save()
             messages.success(request,'your comment was added succesfully')
-            return redirect('/htvshows/'+str(htvshow_id))
+            return redirect('/btvshows/'+str(btvshow_id))
     context = {
         'tvshow': tvshow,
         'gist':comment,
         'like':like,
         'dislike':dislike
     }       
-    return render(request,'hollywood/tvshowDetails.html', context)
+    return render(request,'bollywood/tvshowDetails.html', context)
 
-def htvshowLike(request):
+def btvshowLike(request):
     tvshowLike = get_object_or_404(Tvshows,id=request.GET.get('like'))
     tvshowLike.like.add(request.user)
     return HttpResponseRedirect(tvshowLike.get_absolute_url())
    
-def hmovie(request,hmovie_id):
-    movie = get_object_or_404(Movies, pk= hmovie_id)
+def bmovie(request,bmovie_id):
+    movie = get_object_or_404(Movies, pk= bmovie_id)
     comment = gist.objects.filter(movie=movie)
     like = MovieLike.objects.filter(movie=movie)
     dislike = MovieDislike.objects.filter(movie=movie)
@@ -80,7 +80,7 @@ def hmovie(request,hmovie_id):
             l= MovieLike(user=request.user, movie=movie)
             l.save()
             messages.success(request,'your comment was added succesfully')
-            return redirect('/hmovies/'+str(hmovie_id))
+            return redirect('/bmovies/'+str(bmovie_id))
         elif request.POST.get('movieGist') == 'not-worth-seeing':
             gists = request.POST['gist']
             print(request.POST.get('worth-seeing'))
@@ -89,14 +89,14 @@ def hmovie(request,hmovie_id):
             dl = MovieDislike(user=request.user, movie=movie)
             dl.save()
             messages.success(request,'your comment was added succesfully')
-            return redirect('/hmovies/'+str(hmovie_id))
+            return redirect('/bmovies/'+str(bmovie_id))
     context = {
         'movie': movie,
         'gist':comment,
         'like':like,
         'dislike':dislike
     }       
-    return render(request,'hollywood/movieDetails.html', context)
+    return render(request,'bollywood/movieDetails.html', context)
 def search(request):
     queryset_list = Movies.objects.order_by('-date')
 
@@ -106,11 +106,10 @@ def search(request):
             queryset_list = queryset_list.filter(name__iexact=name)
 
     context = {
-        'hmovies': queryset_list,
+        'bmovies': queryset_list,
         'values': request.GET
     }
-    return render(request, 'hollywood/search.html', context)
-
+    return render(request, 'bollywood/search.html', context)
 
 def Mform(request):
     form = movieform(request.POST or None, request.FILES or None)
@@ -122,15 +121,15 @@ def Mform(request):
     if form.is_valid():
         name = form.cleaned_data['name']
         if Movies.objects.filter(name=name).exists():
-            return redirect('hmovies')
+            return redirect('bmovies')
         else:
             item = form.save(commit=False)
             item.save()
-            return redirect('hmovies')
+            return redirect('bmovies')
     else:
         messages.error(request,'the movie exists already, try searching')
 
-    return render(request, 'hollywood/movieform.html',context)
+    return render(request, 'bollywood/movieform.html',context)
 
 def Tform(request):
     form = tvShowform(request.POST or None, request.FILES or None)
@@ -144,12 +143,12 @@ def Tform(request):
         if form.is_valid():
             name = form.cleaned_data['name']
             if Tvshows.objects.filter(name=name).exists():
-                return redirect('htvshows')
+                return redirect('btvshows')
             else:
                 item = form.save(commit=False)
                 item.save()
-                return redirect('htvshows')
+                return redirect('btvshows')
         else:
             messages.error(request,'the tvshow exists already, try searching')
 
-    return render(request, 'hollywood/tvshowform.html',context)
+    return render(request, 'bollywood/tvshowform.html',context)

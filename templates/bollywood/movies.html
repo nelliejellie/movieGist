@@ -25,72 +25,73 @@
 
 	<!-- navbar -->
 	<div >
-        <ul id="bigscreens">
-                {% if user.is_authenticated %}
-            <li >
-                <!-- dropdowns -->
-                <a href="{% url 'hTform' %}" id="">Upload tvshow for discuss</a>
-            </li>
-                <li>
-                    <li><a href="{% url 'index' %}" id="login">welcome, {{ user.username }}</a></li>
-                    <li>
-                        <a href="javascript:{$('#logout').submit()}" style="">logout</a>
-                        <form id="logout" method="POST" action="{% url 'logout' %}">
-                            {% csrf_token %}
-                            <input type="hidden">
-                        </form>
-                    </li>
-                </li>
-            {% else %}
-            <li >
-                <!-- dropdowns -->
-                <a href="{% url 'login' %}" id="">Upload tvshow for discuss</a>
-            </li>
-            <li>
-                <li><a href="{% url 'login' %}" id="login">Login</a></li>
-                <li><a href="{% url 'register' %}" id="reg" style="position: absolute;right:100px;">Register</a></li>
-            </li>
-            {% endif %}
-        </ul>
-        <!-- navbar -- mobile phones -->
-        <ul id="smallscreens">
-            {% if user.is_authenticated %}
-            <li ><a href="{% url 'hTform' %}" id="">Upload</a></li>
-                <li>
-                    <li><a href="{% url 'index' %}" id="login">welcome, {{ user.username }}</a></li>
-                </li>
-            {% else %}
-            <li ><a href="{% url 'login' %}" id="">Upload</a></li>
-            <li>
-                <li><a href="{% url 'login' %}" id="login">Login</a></li>
-                <li><a href="{% url 'register' %}" id="reg" style="position: absolute;right:100px;">Register</a></li>
-            </li>
-            {% endif %}
-        </ul>
-	</div>
+	<ul id="bigscreens">
+        {% if user.is_authenticated %}
+		<li >
+			<!-- dropdowns -->
+			<a href="{% url 'bMform' %}" id="">Upload movie for discuss</a>
+		</li>
+			<li>
+				<li><a href="{% url 'index' %}" id="login">welcome, {{ user.username }}</a></li>
+				<li style="background-color:#e2d3d3;">
+					<a href="javascript:{$('#logout').submit()}" style="">logout</a>
+					<form id="logout" method="POST" action="{% url 'logout' %}">
+						{% csrf_token %}
+						<input type="hidden">
+					</form>
+				</li>
+			</li>
+        {% else %}
+        <li >
+            <!-- dropdowns -->
+            <a href="{% url 'login' %}" id="">Upload movie for discuss</a>
+        </li>
+		<li>
+			<li><a href="{% url 'login' %}" id="login">Login</a></li>
+			<li><a href="{% url 'register' %}" id="reg" style="position: absolute;right:100px;">Register</a></li>
+		</li>
+		{% endif %}
+	</ul>
+	<!-- navbar -- mobile phones -->
+	<ul id="smallscreens">
+        {% if user.is_authenticated %}
+		<li ><a href="{% url 'bMform' %}" id="">Upload</a></li>
+			<li>
+				<li><a href="{% url 'index' %}" id="login">welcome, {{ user.username }}</a></li>
+			</li>
+        {% else %}
+        <li ><a href="{% url 'login' %}" id="">Upload</a></li>
+		<li>
+			<li><a href="{% url 'login' %}" id="login">Login</a></li>
+			<li><a href="{% url 'register' %}" id="reg" style="position: absolute;right:100px;">Register</a></li>
+		</li>
+		{% endif %}
+	</ul>
+    </div>
+    
 	<!-- search button -->
-	<form method="get" id="formsearch"  >
-		<input type="search" name="searcher" placeholder="search movie" maxlength="20">
-		<input type="submit" name="submit" id="submit">
+	<form method="get" id="formsearch" action="{% url 'search' %}" style="margin: 5px;">
+		<input type="search" name="name" placeholder="search movie" maxlength="20" value="{{values.name}}">
+		<input type="submit" name="submit" id="submit" value="search">
 	</form>
     <!-- hollywood movie list -->
-    {% include 'partials/_alerts.html' %}    
+    {% include 'partials/_alerts.html' %}
 	<div class="container" id="movie-con">
-        {% if tvshows %}
-            {% for tvshow in tvshows %}
+        {% if movies %}
+            {% for movie in movies %}
             <div id="movie">
                 <div>
                     <figure>
-                        <a href="{% url 'htvshow' tvshow.id  %}"><img src='{{tvshow.image.url}}' id="movie-img"></a>
-                        <figcaption><a href="{% url 'htvshow' tvshow.id  %}">{{tvshow.name}}</a></figcaption>
+                        <a href="{% url 'bmovie' movie.id  %}"><img src='{{movie.image.url}}' id="movie-img"></a>
+                        <figcaption><a href="{% url 'bmovie' movie.id  %}">{{movie.name}}</a></figcaption>
                     </figure>
                 </div>
                 <div id="desc">
                     <i> Your Description:</i>
                     <p >
-                        {{tvshow.description}}
+                        {{movie.description}}
                     </p>
-                        <a href="{% url 'htvshow' tvshow.id  %}"><button class="btn btn-success" name="like" value="">View Comments</button></a> <i></i>
+                    <a href="{% url 'bmovie' movie.id  %}"><button class="btn btn-success" name="like" value="">View Comments</button></a>
                 </div>
             </div>
             {% endfor %}
@@ -126,7 +127,6 @@
         </nav>
     </div>
 </body>
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="{% static  'script/jquery-3.4.1.min.js' %}"></script>
 <script src="{% static 'script/script.js' %}"></script>

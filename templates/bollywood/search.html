@@ -18,12 +18,12 @@
     }
 </style>
 <div style="position: absolute;top:220px;width: 40%;z-index:-10">
-    {% if hmovies %}
-        {% for movie in hmovies %}
+    {% if bmovies %}
+        {% for movie in bmovies %}
             <li style="list-style-type:none;width:100%">
                 <figure style="margin: 15px;">
                     <img src="{{movie.image.url}}">
-                    <figcaption ><a href="{% url 'hmovie' movie.id  %}" style="text-align: left;">{{movie.name}}</a></figcaption>
+                    <figcaption ><a href="{% url 'bmovie' movie.id  %}" style="text-align: left;">{{movie.name}}</a></figcaption>
                 </figure>
             </li>
         {% endfor %}

@@ -1,13 +1,22 @@
 /** function for displaying the hover menu on small devicesb **/
 $(function(){
-	$('#Hollywood-smallscreen').dblclick(function(){
+	$('#Hollywood-smallscreen').click(function(){
 		$('#ul-smallscreen1').css({'display':'block'});
 	});
-	$('#Nollywood-smallscreen').dblclick(function(){
+	$('#Hollywood-smallscreen').dblclick(function(){
+		$('#ul-smallscreen1').css({'display':'none'});
+	});
+	$('#Nollywood-smallscreen').click(function(){
 		$('#ul-smallscreen2').css({'display':'block'});
 	});
-	$('#Bollywood-smallscreen').dblclick(function(){
+	$('#Nollywood-smallscreen').dblclick(function(){
+		$('#ul-smallscreen2').css({'display':'none'});
+	});
+	$('#Bollywood-smallscreen').click(function(){
 		$('#ul-smallscreen3').css({'display':'block'});
+	});
+	$('#Bollywood-smallscreen').dblclick(function(){
+		$('#ul-smallscreen2').css({'display':'none'});
 	});
 	$('a').active(function(){
 		$(this).css({'#':'#'});
