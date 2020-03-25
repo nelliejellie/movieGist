@@ -26,11 +26,11 @@
 	<!-- navbar -->
 	<div >
 	<ul id="bigscreens">
+        {% if user.is_authenticated %}
 		<li >
 			<!-- dropdowns -->
-			<a href="{% url 'Mform' %}" id="">Upload movie for discuss</a>
+			<a href="{% url 'hMform' %}" id="">Upload movie for discuss</a>
 		</li>
-		{% if user.is_authenticated %}
 			<li>
 				<li><a href="{% url 'index' %}" id="login">welcome, {{ user.username }}</a></li>
 				<li style="background-color:#e2d3d3;">
@@ -41,7 +41,11 @@
 					</form>
 				</li>
 			</li>
-		{% else %}
+        {% else %}
+        <li >
+            <!-- dropdowns -->
+            <a href="{% url 'login' %}" id="">Upload movie for discuss</a>
+        </li>
 		<li>
 			<li><a href="{% url 'login' %}" id="login">Login</a></li>
 			<li><a href="{% url 'register' %}" id="reg" style="position: absolute;right:100px;">Register</a></li>
@@ -50,12 +54,13 @@
 	</ul>
 	<!-- navbar -- mobile phones -->
 	<ul id="smallscreens">
-		<li ><a href="{% url 'Mform' %}" id="">Upload movie for discuss</a></li>
         {% if user.is_authenticated %}
+		<li ><a href="{% url 'hMform' %}" id="">Upload</a></li>
 			<li>
 				<li><a href="{% url 'index' %}" id="login">welcome, {{ user.username }}</a></li>
 			</li>
-		{% else %}
+        {% else %}
+        <li ><a href="{% url 'login' %}" id="">Upload</a></li>
 		<li>
 			<li><a href="{% url 'login' %}" id="login">Login</a></li>
 			<li><a href="{% url 'register' %}" id="reg" style="position: absolute;right:100px;">Register</a></li>
@@ -64,11 +69,12 @@
 	</ul>
 	</div>
 	<!-- search button -->
-	<form method="get" id="formsearch" action="{% url 'search' %}" >
+	<form method="get" id="formsearch" action="{% url 'search' %}" style="margin: 5px;">
 		<input type="search" name="name" placeholder="search movie" maxlength="20" value="{{values.name}}">
-		<input type="submit" name="submit" id="submit">
+		<input type="submit" name="submit" id="submit" value="search">
 	</form>
-	<!-- hollywood movie list -->
+    <!-- hollywood movie list -->
+    {% include 'partials/_alerts.html' %}
 	<div class="container" id="movie-con">
         {% if movies %}
             {% for movie in movies %}
@@ -84,8 +90,7 @@
                     <p >
                         {{movie.description}}
                     </p>
-                    <button class="btn btn-success">like</button> <i>{{movie.likes}}</i>
-				    <button class="btn btn-danger">dislike</button> <i>{{movie.dislikes}}</i>
+                    <a href="{% url 'hmovie' movie.id  %}"><button class="btn btn-success" name="like" value="">View Comments</button></a>
                 </div>
             </div>
             {% endfor %}
@@ -125,4 +130,9 @@
 <script src="{% static  'script/jquery-3.4.1.min.js' %}"></script>
 <script src="{% static 'script/script.js' %}"></script>
 <script src="{% static 'script/bootstrap.bundle.js' %}"></script>
+<script>
+    setTimeout(function(){
+        $('#message').fadeOut('slow');
+    }, 3000);
+</script>
 </html>

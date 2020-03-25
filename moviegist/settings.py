@@ -33,6 +33,8 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
     'hollywood.apps.HollywoodConfig',
+    'bollywood.apps.BollywoodConfig',
+    'nollywood.apps.NollywoodConfig',
     'pages.apps.PagesConfig',
     'django.contrib.admin',
     'django.contrib.auth',

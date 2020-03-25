@@ -3,39 +3,72 @@
 
 <html>
 <head>
-	<title>Movie Gist</title>
+	<title>Movie Gist {% block title %} | Home {% endblock %}</title>
 	<link type="text/css" rel="stylesheet" href="{% static 'css/bootstrap.css' %}" />
 	<link type="text/css" rel="stylesheet" href="{% static 'css/style.css' %}" />
 	<link type="text/css" media="screen and (max-width: 700px)" rel="stylesheet" href="{% static 'css/style2.css' %}" />
 	<link type="text/css" media="screen and (min-width: 701px) and (max-width: 1200px)" rel="stylesheet" href="{% static 'css/style3.css' %}" />
 </head>
+<style>
+		@media(max-width: 720px){
+            #wrapper-hollywood{
+                top: 250px;
+			}
+			#wrapper-bollywood{
+                top: 490px;
+			}
+			#wrapper-nollywood{
+                top: 790px;
+			}
+			#holly-h1{
+				top: 200px;
+			}
+			#formsearch{
+				top: 130px;
+			}
+			#child{
+				width: 110px;
+				height: 110px;
+			}
+			img{
+				height: 110px;
+				width: 110px;
+			}
+		}
+		@media(min-width: 721px and max-width: 900px;){
+			img{
+				height: 200px;
+				width: 200px;
+			}
+		}
+</style>
 <body>
 	<!-- header -->
-	<header><a href="{% url 'index' %}">MovieGist</a></header>
+	<header><a href="{% url 'index' %}">MovieGist </a></header>
 
 	<!-- navbar -->
 	<div >
 	<ul id="bigscreens">
 		<li >
 			<!-- dropdowns -->
-			<a href="{% url 'hmovies' %}" id="Hollywood">Hollywood</a>
+			<a href="#" id="Hollywood">Hollywood</a>
 			<ul id="hlist">
-				<li><a href="{% url 'hmovies' %}" id="Movies" >Movies</a></li>
-				<li><a href="{% url 'htvshows' %}" id="Tvs">Tv Series</a></li>
+				<li><a href="{% url 'hmovies' %}" id="Movies" style="color: #b55353;" >Movies</a></li>
+				<li><a href="{% url 'htvshows' %}" id="Tvs" style="color: #b55353;">Tv Series</a></li>
 			</ul>
 		</li>
 		<li>
 			<a href="#" id="Nollywood">Nollywood</a>
 			<ul id="nlist">
-				<li><a href="#" id="Movies" >Movies</a></li>
-				<li><a href="#" id="Tvs">Tv Series</a></li>
+				<li><a href="{% url 'nmovies' %}" id="Movies" style="color: #b55353;">Movies</a></li>
+				<li><a href="{% url 'ntvshows' %}" id="Tvs" style="color: #b55353;">Tv Series</a></li>
 			</ul>
 		</li>
 		<li>
 			<a href="#" id="bollywood">Bollywood</a>
 			<ul id="blist">
-				<li><a href="#" id="Moviess" >Movies</a></li>
-				<li><a href="#" id="Tvs">Tv Series</a></li>
+				<li><a href="{% url 'bmovies' %}" id="Moviess" style="color: #b55353;" >Movies</a></li>
+				<li><a href="{% url 'btvshows' %}" id="Tvs" style="color: #b55353;">Tv Series</a></li>
 			</ul>
 		</li>
 		{% if user.is_authenticated %}
@@ -61,24 +94,24 @@
 		<li >Menu
 			<ul>
 				<li>
-					<a href="{% url 'hmovies' %}" id="Hollywood-smallscreen">Hollywood</a>	
+					<a href="#" id="Hollywood-smallscreen">Hollywood</a>	
 					<ul id="ul-smallscreen1">
-						<li><a href="{% url 'hmovies' %}" >Movies</a></li>
-						<li><a href="#" >Tv series</a></li>
+						<li><a href="{% url 'hmovies' %}" style="color: #b55353;">Movies</a></li>
+						<li><a href="{% url 'htvshows' %}" style="color: #b55353;">Tv series</a></li>
 					</ul>
 				</li>
 				<li>
 					<a href="#" id="Nollywood-smallscreen">Bollywood</a>
 					<ul id="ul-smallscreen2">
-						<li><a href="#" >Movies</a></li>
-						<li><a href="#" >Tv series</a></li>
+						<li><a href="{% url 'bmovies' %}" style="color: #b55353;">Movies</a></li>
+						<li><a href="{% url 'btvshows' %}" style="color: #b55353;">Tv series</a></li>
 					</ul>
 				</li>
 				<li>
 					<a href="#" id="Bollywood-smallscreen">Nollywood</a>
 					<ul id="ul-smallscreen3">
-						<li><a href="#" >Movies</a></li>
-						<li><a href="#" >Tv series</a></li>
+						<li><a href="{% url 'nmovies' %}" style="color: #b55353;">Movies</a></li>
+						<li><a href="{% url 'ntvshows' %}" style="color: #b55353;">Tv series</a></li>
 					</ul>
 				</li>
 				{% if user.is_authenticated %}
@@ -106,37 +139,49 @@
 	</ul>
 	</div>
 	<!-- search button -->
-	<form method="get" id="formsearch"  >
+	<form method="get" id="formsearch" style="margin: 5px;" >
 		<input type="search" name="searcher" placeholder="search movie" maxlength="20">
-		<input type="submit" name="submit" id="submit">
+		<input type="submit" name="submit" id="submit" value="search">
 	</form>
 	<!-- movie images -->
 	{% block content %} {% endblock %}
 </body>
-<footer>
-	<div class="row">
-			<div class="col-4">
-				<i>send us an email at:</i>
-				<span>emekaewelike@gmail.com</span>
-			</div>
-			<div class="col-4">
-				<i>Phone no:</i>
-				<span>08143291888</span>
-			</div>
-			<div class="col-4">
-				<i>Address:</i>
-				<span></span>
-			</div>
-		</div>
-	</div>
-</footer>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="{% static  'script/jquery-3.4.1.min.js' %}"></script>
-<script src="{% static 'script/script.js' %}"></script>
 <script src="{% static 'script/bootstrap.bundle.js' %}"></script>
+<script src="{% static 'script/script.js' %}"></script>
 <script>
+	/** function for displaying the hover menu on small devicesb **/
+$(function(){
+	$('#Hollywood-smallscreen').click(function(){
+		$('#ul-smallscreen1').css({'display':'block'});
+	});
+	$('#Hollywood-smallscreen').dblclick(function(){
+		$('#ul-smallscreen1').css({'display':'none'});
+	});
+	$('#Nollywood-smallscreen').click(function(){
+		$('#ul-smallscreen2').css({'display':'block'});
+	});
+	$('#Nollywood-smallscreen').dblclick(function(){
+		$('#ul-smallscreen2').css({'display':'none'});
+	});
+	$('#Bollywood-smallscreen').click(function(){
+		$('#ul-smallscreen3').css({'display':'block'});
+	});
+	$('#Bollywood-smallscreen').dblclick(function(){
+		$('#ul-smallscreen3').css({'display':'none'});
+	});
+	$('a').active(function(){
+		$(this).css({'#':'#'});
+	});
 	setTimeout(function(){
 		$('#message').fadeOut('slow');
 	}, 2000);
+	$('#like-button').click(function(){
+		$(this).attr({'class':'disabled'});
+	});
+});
+
 </script>
 </html>

@@ -33,10 +33,10 @@ class Tvshows(models.Model):
 
 class gist(models.Model):    
     gists = models.TextField(max_length=300,null=True)
-    movie_like = models.ManyToManyField(User, blank=True, related_name='hmovie_likes')
-    movie_dislike = models.ManyToManyField(User, blank=True, related_name='hmovie_dislikes')
+    movie_like = models.ManyToManyField(User, blank=True, related_name='nmovie_likes')
+    movie_dislike = models.ManyToManyField(User, blank=True, related_name='nmovie_dislikes')
     movie = models.ForeignKey(Movies, on_delete=models.CASCADE)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='nollyusermovie')
     date = models.DateTimeField(default=datetime.now, blank=True)
     worth_seeing = models.CharField(max_length=20,null=True, blank=True)
     not_worth_seeing = models.CharField(max_length=20,null=True, blank=True)
@@ -47,10 +47,10 @@ class gist(models.Model):
 
 class tvshowgist(models.Model):    
     gists = models.TextField(max_length=300,null=True)
-    tvshow_like = models.ManyToManyField(User, blank=True, related_name='htvshow_likes')
-    tvshow_dislike = models.ManyToManyField(User, blank=True, related_name='htvshow_dislikes')
+    tvshow_like = models.ManyToManyField(User, blank=True, related_name='ntvshow_likes')
+    tvshow_dislike = models.ManyToManyField(User, blank=True, related_name='ntvshow_dislikes')
     tvshow = models.ForeignKey(Tvshows, on_delete=models.CASCADE)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='nollyusertvshow')
     date = models.DateTimeField(default=datetime.now, blank=True)
     worth_seeing = models.CharField(max_length=20,null=True, blank=True)
     not_worth_seeing = models.CharField(max_length=20,null=True, blank=True)
@@ -61,21 +61,21 @@ class tvshowgist(models.Model):
         return str(self.gists)
 
 class Like(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='mylikesuser')
-    tvshow = models.ForeignKey(Tvshows, on_delete=models.CASCADE, related_name='mylikestvshow')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='mynollylikesuser')
+    tvshow = models.ForeignKey(Tvshows, on_delete=models.CASCADE, related_name='mynollylikestvshow')
     date = models.DateTimeField(default=datetime.now, blank=True)
 
 class Dislike(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='mydislikesuser')
-    tvshow = models.ForeignKey(Tvshows, on_delete=models.CASCADE, related_name='mydislikestvshow')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='mynollydislikesuser')
+    tvshow = models.ForeignKey(Tvshows, on_delete=models.CASCADE, related_name='mynollydislikestvshow')
     date = models.DateTimeField(default=datetime.now, blank=True)
 
 class MovieLike(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='mylikesusermovies')
-    movie = models.ForeignKey(Movies, on_delete=models.CASCADE, related_name='mylikesmovies')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='mynollylikesusermovies')
+    movie = models.ForeignKey(Movies, on_delete=models.CASCADE, related_name='mynollylikesmovies')
     date = models.DateTimeField(default=datetime.now, blank=True)
 
 class MovieDislike(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='mydislikesusermovies')
-    movie = models.ForeignKey(Movies, on_delete=models.CASCADE, related_name='mydislikesmovies')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='mynollydislikesusermovies')
+    movie = models.ForeignKey(Movies, on_delete=models.CASCADE, related_name='mynollydislikesmovies')
     date = models.DateTimeField(default=datetime.now, blank=True)

@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 {% extends 'base.html' %}
 {% load static %}
+
+{% block title %} | Upload {% endblock %}
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -23,7 +26,8 @@
         }
     </style>
     <div class="container" id="form-container" style="background-color:#8594b2;margin:20px;">
-        <h5>create your movie thread</h5>
+        <h5>create your series thread</h5>
+        {% if user.is_authenticated %}
         <form method="POST" enctype="multipart/form-data" action="" >
         {% csrf_token %}
             <div style="margin-top: 20px;">
@@ -41,6 +45,14 @@
                 {{ form.year_of_release }}
             </div>
             <div>
+            <label for="{{form.description.id_for_label}}" style="color:black;">Season:<i>optional</i></label><br>
+                {{ form.season }}
+            </div>
+            <div>
+            <label for="{{form.description.id_for_label}}" style="color:black;">Episode:<i>optional</i></label><br>
+                {{ form.episode }}
+            </div>
+            <div>
             <label for="{{form.image.id_for_label}}" style="color:black;">Image: </label><br>
                 {{ form.image }}
                 <br>
@@ -49,8 +61,9 @@
             <div style="margin-bottom: 20px;">
                 <button type="submit" class="btn btn-primary btn-lg" value="post">Post</button>
             </div>
-        </form>   
+        </form>	
     </div>
+    {% endif %}
     {% endblock %}
 </body>
 </html>

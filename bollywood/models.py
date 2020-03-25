@@ -1,4 +1,7 @@
 from django.db import models
+
+# Create your models here.
+from django.db import models
 from datetime import datetime
 from django.contrib.auth.models import User
 
@@ -33,10 +36,10 @@ class Tvshows(models.Model):
 
 class gist(models.Model):    
     gists = models.TextField(max_length=300,null=True)
-    movie_like = models.ManyToManyField(User, blank=True, related_name='hmovie_likes')
-    movie_dislike = models.ManyToManyField(User, blank=True, related_name='hmovie_dislikes')
+    movie_like = models.ManyToManyField(User, blank=True, related_name='bmovie_likes')
+    movie_dislike = models.ManyToManyField(User, blank=True, related_name='bmovie_dislikes')
     movie = models.ForeignKey(Movies, on_delete=models.CASCADE)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='bollyusermovie')
     date = models.DateTimeField(default=datetime.now, blank=True)
     worth_seeing = models.CharField(max_length=20,null=True, blank=True)
     not_worth_seeing = models.CharField(max_length=20,null=True, blank=True)
@@ -47,10 +50,10 @@ class gist(models.Model):
 
 class tvshowgist(models.Model):    
     gists = models.TextField(max_length=300,null=True)
-    tvshow_like = models.ManyToManyField(User, blank=True, related_name='htvshow_likes')
-    tvshow_dislike = models.ManyToManyField(User, blank=True, related_name='htvshow_dislikes')
+    tvshow_like = models.ManyToManyField(User, blank=True, related_name='btvshow_likes')
+    tvshow_dislike = models.ManyToManyField(User, blank=True, related_name='btvshow_dislikes')
     tvshow = models.ForeignKey(Tvshows, on_delete=models.CASCADE)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='bollyusertvshow')
     date = models.DateTimeField(default=datetime.now, blank=True)
     worth_seeing = models.CharField(max_length=20,null=True, blank=True)
     not_worth_seeing = models.CharField(max_length=20,null=True, blank=True)
@@ -61,21 +64,21 @@ class tvshowgist(models.Model):
         return str(self.gists)
 
 class Like(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='mylikesuser')
-    tvshow = models.ForeignKey(Tvshows, on_delete=models.CASCADE, related_name='mylikestvshow')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='mybollylikesuser')
+    tvshow = models.ForeignKey(Tvshows, on_delete=models.CASCADE, related_name='mybollylikestvshow')
     date = models.DateTimeField(default=datetime.now, blank=True)
 
 class Dislike(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='mydislikesuser')
-    tvshow = models.ForeignKey(Tvshows, on_delete=models.CASCADE, related_name='mydislikestvshow')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='mybollydislikesuser')
+    tvshow = models.ForeignKey(Tvshows, on_delete=models.CASCADE, related_name='mybollydislikestvshow')
     date = models.DateTimeField(default=datetime.now, blank=True)
 
 class MovieLike(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='mylikesusermovies')
-    movie = models.ForeignKey(Movies, on_delete=models.CASCADE, related_name='mylikesmovies')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='mybollylikesusermovies')
+    movie = models.ForeignKey(Movies, on_delete=models.CASCADE, related_name='mybollylikesmovies')
     date = models.DateTimeField(default=datetime.now, blank=True)
 
 class MovieDislike(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='mydislikesusermovies')
-    movie = models.ForeignKey(Movies, on_delete=models.CASCADE, related_name='mydislikesmovies')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='mybollydislikesusermovies')
+    movie = models.ForeignKey(Movies, on_delete=models.CASCADE, related_name='mybollydislikesmovies')
     date = models.DateTimeField(default=datetime.now, blank=True)

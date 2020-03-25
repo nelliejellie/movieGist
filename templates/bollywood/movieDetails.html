@@ -7,7 +7,7 @@
 	<link type="text/css" rel="stylesheet" href="{% static 'css/style.css' %}" />
 	<link type="text/css" media="screen and (max-width: 700px)" rel="stylesheet" href="{% static 'css/style2.css' %}" />
 	<link type="text/css" media="screen and (min-width: 701px) and (max-width: 1200px)" rel="stylesheet" href="{% static 'css/style3.css' %}" />
-	<style>
+<style>
 		@media(max-width: 700px){
 			#movie-con{
 				position: absolute;
@@ -26,12 +26,7 @@
 				top: 400px;
 				position: absolute;
 			}
-			#textarea{
-				padding: 10px;
-			}
-		}
-		#like-form{
-			display: inline-block;
+			
 		}
 	</style>
 </head>
@@ -41,63 +36,64 @@
 
 	<!-- navbar -->
 	<div >
-		<ul id="bigscreens">
-			<li >
-				<!-- dropdowns -->
-				<a href="{% url 'htvshows' %}" id="Hollywood">Back</a>
-			</li>
-			{% if user.is_authenticated %}
-				<li>
-					<li><a href="{% url 'index' %}" id="login">welcome, {{ user.username }}</a></li>
-					<li>
-						<a href="javascript:{$('#logout').submit()}" style="">logout</a>
-						<form id="logout" method="POST" action="{% url 'logout' %}">
-							{% csrf_token %}
-							<input type="hidden">
-						</form>
-					</li>
-				</li>
-			{% else %}
+	<ul id="bigscreens">
+		<li >
+			<!-- dropdowns -->
+			<a href="{% url 'bmovies' %}" id="Hollywood">Back</a>
+		</li>
+		{% if user.is_authenticated %}
 			<li>
-				<li><a href="{% url 'login' %}" id="login">Login</a></li>
-				<li><a href="{% url 'register' %}" id="reg" style="position: absolute;right:100px;">Register</a></li>
-			</li>
-			{% endif %}
-		</ul>
-		<!-- navbar -- mobile phones -->
-		<ul id="smallscreens">
-			<li ><a href="#" id="">Upload tvshow for discuss</a></li>	
-			{% if user.is_authenticated %}
+				<li><a href="{% url 'index' %}" id="login">welcome, {{ user.username }}</a></li>
 				<li>
-					<li><a href="{% url 'index' %}" id="login">welcome, {{ user.username }}</a></li>
+					<a href="javascript:{$('#logout').submit()}" style="">logout</a>
+					<form id="logout" method="POST" action="{% url 'logout' %}">
+						{% csrf_token %}
+						<input type="hidden">
+					</form>
 				</li>
-			{% else %}
-			<li>
-				<li><a href="{% url 'login' %}" id="login">Login</a></li>
-				<li><a href="{% url 'register' %}" id="reg" style="position: absolute;right:100px;">Register</a></li>
 			</li>
-			{% endif %}
-		</ul>
+		{% else %}
+		<li>
+			<li><a href="{% url 'login' %}" id="login">Login</a></li>
+			<li><a href="{% url 'register' %}" id="reg" style="position: absolute;right:100px;">Register</a></li>
+		</li>
+		{% endif %}
+	</ul>
+	<!-- navbar -- mobile phones -->
+	<ul id="smallscreens">
+		<li ><a href="{% url 'bmovies' %}" id="">Back</a></li>	
+		{% if user.is_authenticated %}
+			<li>
+				<li><a href="{% url 'index' %}" id="login">welcome, {{ user.username }}</a></li>
+			</li>
+		{% else %}
+		<li>
+			<li><a href="{% url 'login' %}" id="login">Login</a></li>
+			<li><a href="{% url 'register' %}" id="reg" style="position: absolute;right:100px;">Register</a></li>
+		</li>
+		{% endif %}
+	</ul>
 	</div>
 	<!-- movie details -->
 	<div class="container" id="movie-con">
+		{% include 'partials/_alerts.html' %}
 		<div id="movie">
 			<div>
 				<figure>
-					<img src='{{tvshow.image.url}}' id="movie-img">
-					<figcaption style="text-align: center;">{{tvshow.name}}</figcaption>
+					<img src='{{movie.image.url}}' id="movie-img">
+					<figcaption style="text-align: center;">{{movie.name}}</figcaption>
 				</figure>
 			</div>
 			<div id="desc">
 				<i> Your Description:</i>
-				<p >{{tvshow.description}}</p>
+				<p >{{movie.description}}	</p>
 				<form method="post" enctype="multipart/form-data" action="">
 					{% csrf_token %}
-					<button class="btn btn-success" name="like" value="{{tvshow.id}}" disabled>Worth-Seeing</button> <i>{{like.count}}</i>
+					<button class="btn btn-success" name="like" value="{{movie.id}}" disabled>Worth-Seeing</button> <i>{{like.count}}</i>
 				</form>
 				<form>
 					{% csrf_token %}
-					<button class="btn btn-danger" name="dislike" value="{{tvshow.id}}" disabled>Not-Worth-Seeing</button> <i>{{dislike.count}}</i>
+					<button class="btn btn-danger" name="dislike" value="{{movie.id}}" disabled>Not-Worth-Seeing</button> <i>{{dislike.count}}</i>
 				</form>	
 			</div>
 		</div>
@@ -116,13 +112,13 @@
 	<!-- chatform -->
 	<div id="chat-form">
 		{% if user.is_authenticated %}
-		<form method="post" action="{% url 'htvshow' tvshow.id  %}" id="chat" enctype="multipart/form-data">
+		<form method="post" action="{% url 'bmovie' movie.id  %}" id="chat" enctype="multipart/form-data">
 			{% csrf_token %}
 			<div style="text-align: right;margin-right: 30px;"><input type="radio" name="movieGist" value="worth-seeing" id="gh"><i>Worth-seeing</i></div>
 			<div style="text-align: right;margin-right: 30px;"><input type="radio" name="movieGist" value="not-worth-seeing" id="gp"><i>Not-Worth-seeing</i></div>
 			<textarea  name="gist" id="input-gist" placeholder="" id="textarea" value="big things" style="padding: 10px;" ></textarea>
 			<input type="submit" name="submit" class="btn btn-success btn-lg" value="gist" id="submit-chat">
-		</form>	
+		</form>
 		{% else %}
 		<form  action="{% url 'login'   %}" id="chat" >
 			{% csrf_token %}
@@ -131,7 +127,7 @@
 			<textarea   id="input-gist" placeholder="" id="textarea"  style="padding: 10px;" ></textarea>
 			<input type="submit" name="submit" class="btn btn-success btn-lg" value="gist" id="submit-chat">
 		</form>	
-		{% endif %}
+		{% endif %}	
 	</div>
 </body>
 <footer>
@@ -142,13 +138,8 @@
 <script src="{% static 'script/script.js' %}"></script>
 <script src="{% static 'script/bootstrap.bundle.js' %}"></script>
 <script>
-	$(function(){
-		setTimeout(function(){
-			$('#message').fadeOut('slow');
-		}, 2000);
-		$('#like-button').click(function(){
-			$(this).attr({'class':'disabled'});
-		});
-	});
+	setTimeout(function(){
+		$('#message').fadeOut('slow');
+	}, 2000);
 </script>
 </html>
