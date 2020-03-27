@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 {% extends 'base.html' %}
 {% load static %}
+{% load widget_tweaks %}
+
 
 {% block title %} | Upload {% endblock %}
 
@@ -32,13 +34,13 @@
         {% csrf_token %}
             <div style="margin-top: 20px;">
             <label for="{{form.name.id_for_label}}" style="color:black;">Name:</label><br>
-                {{ form.name }}
+                {% render_field form.name class="input" placeholder='Tvshow name'%}               
                 <br>
                 <br>
             </div>
             <div>
             <label for="{{form.description.id_for_label}}" style="color:black;">Description:</label><br>
-                {{ form.description }}
+                {% render_field form.description class="input" placeholder='your brief description of the tvshow'%}                
             </div>
             <div>
             <label for="{{form.description.id_for_label}}" style="color:black;">Release Year:</label><br>

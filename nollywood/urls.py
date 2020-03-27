@@ -9,5 +9,6 @@ urlpatterns = [
     path('ntvshows/<int:ntvshow_id>',views.ntvshow, name='ntvshow'),
     path('ntvshows/Tform',views.Tform, name='Tform'),
     path('nmovies/Mform',views.Mform, name='Mform'),
-    
+    path('nmovies/<int:nmovie_id>/delete',views.Ndelete, name='ndelete'),
+    path('ntvshows/<int:ntvshow_id>/deletetvshow',views.NdeleteTvshow, name='ndeletetvshow'),
 ]

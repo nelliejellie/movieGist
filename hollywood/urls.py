@@ -10,5 +10,8 @@ urlpatterns = [
     path('htvshows/<int:htvshow_id>/like',views.htvshowLike, name='htvshowLike'),
     path('htvshows/Tform',views.Tform, name='hTform'),
     path('hmovies/Mform',views.Mform, name='hMform'),
-    
+    path('hmovies/<int:hmovie_id>/delete',views.delete, name='delete'),
+    path('htvshows/<int:htvshow_id>/deletetvshow',views.deleteTvshow, name='deletetvshow'),
+
+
 ]

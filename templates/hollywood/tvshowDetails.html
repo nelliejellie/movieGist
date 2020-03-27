@@ -109,6 +109,8 @@
 		<i>{{comments.user}}:</i>
 		<p>{{ comments.gists }}
 			<br><small><i><span style="color: #49d32a;">{{comments.user}}</span> thinks it's {% if comments.worth_seeing is not None %}<span style="color: blue;">{{comments.worth_seeing}}</span>{% endif %}{% if comments.not_worth_seeing is not None %}<span style="color: red;">{{comments.not_worth_seeing}}</span>{% endif %}</i></small>
+			<a href="{% url 'deletetvshow'  comments.id %}"><img src="{% static 'img/delete.png' %}" alt='delete' style="width: 30px;height: 30px"></a>					
+			
 		</p>
 		{% endfor %}
 		{% endif %}
