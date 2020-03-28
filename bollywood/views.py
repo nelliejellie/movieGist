@@ -36,23 +36,29 @@ def btvshow(request,btvshow_id):
     dislike = Dislike.objects.filter(tvshow=tvshow)
     if request.method == 'POST':
         if request.POST.get('movieGist') == 'worth-seeing':
-            gists = request.POST['gist']
-            print(request.POST.get('worth-seeing'))
-            g = tvshowgist(gists=gists, user=request.user, tvshow=tvshow, worth_seeing=request.POST.get('movieGist'))
-            g.save()
-            l= Like(user=request.user, tvshow=tvshow)
-            l.save()
-            messages.success(request,'your comment was added succesfully')
-            return redirect('/btvshows/'+str(btvshow_id))
+            if gist.objects.filter(tvshow=tvshow, user_id=request.user.id).exists():
+                messages.error(request, 'you already commented on this tvshow')
+            else:
+                gists = request.POST['gist']
+                print(request.POST.get('worth-seeing'))
+                g = tvshowgist(gists=gists, user=request.user, tvshow=tvshow, worth_seeing=request.POST.get('movieGist'))
+                g.save()
+                l= Like(user=request.user, tvshow=tvshow)
+                l.save()
+                messages.success(request,'your comment was added succesfully')
+                return redirect('/btvshows/'+str(btvshow_id))
         elif request.POST.get('movieGist') == 'not-worth-seeing':
-            gists = request.POST['gist']
-            print(request.POST.get('worth-seeing'))
-            g = tvshowgist(gists=gists, user=request.user, tvshow=tvshow, not_worth_seeing=request.POST.get('movieGist'))
-            g.save()
-            dl = Dislike(user=request.user, tvshow=tvshow)
-            dl.save()
-            messages.success(request,'your comment was added succesfully')
-            return redirect('/btvshows/'+str(btvshow_id))
+            if gist.objects.filter(tvshow=tvshow, user_id=request.user.id).exists():
+                messages.error(request, 'you already commented on this tvshow')
+            else:
+                gists = request.POST['gist']
+                print(request.POST.get('worth-seeing'))
+                g = tvshowgist(gists=gists, user=request.user, tvshow=tvshow, not_worth_seeing=request.POST.get('movieGist'))
+                g.save()
+                dl = Dislike(user=request.user, tvshow=tvshow)
+                dl.save()
+                messages.success(request,'your comment was added succesfully')
+                return redirect('/btvshows/'+str(btvshow_id))
     context = {
         'tvshow': tvshow,
         'gist':comment,
@@ -73,23 +79,29 @@ def bmovie(request,bmovie_id):
     dislike = MovieDislike.objects.filter(movie=movie)
     if request.method == 'POST':
         if request.POST.get('movieGist') == 'worth-seeing':
-            gists = request.POST['gist']
-            print(request.POST.get('worth-seeing'))
-            g = gist(gists=gists, user=request.user, movie=movie, worth_seeing=request.POST.get('movieGist'))
-            g.save()
-            l= MovieLike(user=request.user, movie=movie)
-            l.save()
-            messages.success(request,'your comment was added succesfully')
-            return redirect('/bmovies/'+str(bmovie_id))
+            if gist.objects.filter(tvshow=tvshow, user_id=request.user.id).exists():
+                messages.error(request, 'you already commented on this movie')
+            else:
+                gists = request.POST['gist']
+                print(request.POST.get('worth-seeing'))
+                g = gist(gists=gists, user=request.user, movie=movie, worth_seeing=request.POST.get('movieGist'))
+                g.save()
+                l= MovieLike(user=request.user, movie=movie)
+                l.save()
+                messages.success(request,'your comment was added succesfully')
+                return redirect('/bmovies/'+str(bmovie_id))
         elif request.POST.get('movieGist') == 'not-worth-seeing':
-            gists = request.POST['gist']
-            print(request.POST.get('worth-seeing'))
-            g = gist(gists=gists, user=request.user, movie=movie, not_worth_seeing=request.POST.get('movieGist'))
-            g.save()
-            dl = MovieDislike(user=request.user, movie=movie)
-            dl.save()
-            messages.success(request,'your comment was added succesfully')
-            return redirect('/bmovies/'+str(bmovie_id))
+            if gist.objects.filter(tvshow=tvshow, user_id=request.user.id).exists():
+                messages.error(request, 'you already commented on this movie')
+            else:
+                gists = request.POST['gist']
+                print(request.POST.get('worth-seeing'))
+                g = gist(gists=gists, user=request.user, movie=movie, not_worth_seeing=request.POST.get('movieGist'))
+                g.save()
+                dl = MovieDislike(user=request.user, movie=movie)
+                dl.save()
+                messages.success(request,'your comment was added succesfully')
+                return redirect('/bmovies/'+str(bmovie_id))
     context = {
         'movie': movie,
         'gist':comment,
@@ -152,3 +164,49 @@ def Tform(request):
             messages.error(request,'the tvshow exists already, try searching')
 
     return render(request, 'bollywood/tvshowform.html',context)
+
+def Bdelete(request, bmovie_id):
+    gists = get_object_or_404(gist, id=bmovie_id)
+    movie  = Movies.objects.filter(gist=gists)
+    like = MovieLike.objects.filter(user=request.user,movie=gists.movie) 
+    dislike = MovieDislike.objects.filter(user=request.user, movie=gists.movie)   
+    if request.method == 'POST':
+        if request.POST.get('comment') == 'Yes':
+            if gists.user == request.user:
+                gists.delete()
+                if like:
+                    like.delete()
+                else:
+                    dislike.delete()
+                messages.success(request,'your comment was deleted successfully')
+                return redirect('/bmovies/')
+            else:
+                messages.error(request,'this comment could not be deleted because you werent the creator')
+    context = {
+        'movie' : movie,
+        'gists' : gists,
+    }
+    return render(request,'bollywood/delete.html', context)
+
+def BdeleteTvshow(request, btvshow_id):
+    tvshowgists = get_object_or_404(tvshowgist, id=btvshow_id)
+    tvshow  = Tvshows.objects.filter(tvshowgist=tvshowgists)
+    like = Like.objects.filter(user=request.user,tvshow=tvshowgists.tvshow) 
+    dislike = Dislike.objects.filter(user=request.user, tvshow=tvshowgists.tvshow)   
+    if request.method == 'POST':
+        if request.POST.get('comment') == 'Yes':
+            if tvshowgists.user == request.user:
+                tvshowgists.delete()
+                if like:
+                    like.delete()
+                else:
+                    dislike.delete()
+                messages.success(request,'your comment was deleted successfully')
+                return redirect('/btvshows/')
+            else:
+                messages.error(request,'this comment could not be deleted because you werent the creator')
+    context = {
+        'tvshow' : tvshow,
+        'tvshowgists' : tvshowgists,
+    }
+    return render(request,'bollywood/deletetvshow.html', context)

@@ -16,6 +16,9 @@
                 right: 10px;
                 width: 30%;
             }
+            li{
+                width: 190px;
+            }
         }
     </style>
 </head>
@@ -29,10 +32,10 @@
                 {% if user.is_authenticated %}
             <li >
                 <!-- dropdowns -->
-                <a href="{% url 'hTform' %}" id="">Upload tvshow for discuss</a>
+                <a href="{% url 'hTform' %}" id="">Create Tvshow Thread</a>
             </li>
                 <li>
-                    <li><a href="{% url 'index' %}" id="login">welcome, {{ user.username }}</a></li>
+                    <li><a href="{% url 'index' %}" id="login">welcome, {{ user.username }}(Dashboard)</a></li>
                     <li>
                         <a href="javascript:{$('#logout').submit()}" style="">logout</a>
                         <form id="logout" method="POST" action="{% url 'logout' %}">
@@ -44,7 +47,7 @@
             {% else %}
             <li >
                 <!-- dropdowns -->
-                <a href="{% url 'login' %}" id="">Upload tvshow for discuss</a>
+                <a href="{% url 'login' %}" id="">Create Tvshow Thread</a>
             </li>
             <li>
                 <li><a href="{% url 'login' %}" id="login">Login</a></li>
@@ -55,12 +58,12 @@
         <!-- navbar -- mobile phones -->
         <ul id="smallscreens">
             {% if user.is_authenticated %}
-            <li ><a href="{% url 'hTform' %}" id="">Upload</a></li>
+            <li ><a href="{% url 'hTform' %}" id="">createTvshowThread</a></li>
                 <li>
-                    <li><a href="{% url 'index' %}" id="login">welcome, {{ user.username }}</a></li>
+                    <li><a href="{% url 'index' %}" id="login">{{ user.username }}(Dashboard)</a></li>
                 </li>
             {% else %}
-            <li ><a href="{% url 'login' %}" id="">Upload</a></li>
+            <li ><a href="{% url 'login' %}" id="">createTvshowThread</a></li>
             <li>
                 <li><a href="{% url 'login' %}" id="login">Login</a></li>
                 <li><a href="{% url 'register' %}" id="reg" style="position: absolute;right:100px;">Register</a></li>

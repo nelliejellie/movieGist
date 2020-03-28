@@ -16,7 +16,7 @@ class TvshowsAdmin(admin.ModelAdmin):
     list_per_page = 20 #pagination
 
 class gistAdmin(admin.ModelAdmin):
-    list_display = ('id','gists','date',)
+    list_display = ('id','gists','date','user','movie')
     list_display_links = ('id','gists','date',)
     list_filter = ('gists',)
     search_fields = ('gists',)
