@@ -11,4 +11,6 @@ urlpatterns = [
     path('bmovies/Mform',views.Mform, name='bMform'),
     path('bmovies/<int:bmovie_id>/delete',views.Bdelete, name='bdelete'),
     path('btvshows/<int:btvshow_id>/deletetvshow',views.BdeleteTvshow, name='bdeletetvshow'),
+    path('btvshows/<int:btvshow_id>/deletetvshowthread',views.bTvshowThreadDelete, name='bTvshowThreadDelete'),
+    path('bmovies/<int:bmovie_id>/deletemoviethread',views.bmovieDelete, name='bmoviesdelete'),
 ]

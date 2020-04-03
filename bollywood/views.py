@@ -11,8 +11,8 @@ from django.db.models import F
 
 # Create your views here.
 def bmovies(request):
-    movies = Movies.objects.all()
-    paginator = Paginator(movies, 10)
+    movies = Movies.objects.order_by('-date')
+    paginator = Paginator(movies, 30)
     page = request.GET.get('page')
     paged_movies = paginator.get_page(page)
     context = {
@@ -22,7 +22,7 @@ def bmovies(request):
 
 def btvshows(request):
     tvshows = Tvshows.objects.order_by('-date')
-    paginator = Paginator(tvshows, 10)
+    paginator = Paginator(tvshows, 30)
     page = request.GET.get('page')
     paged_tvshows = paginator.get_page(page)
     context = {
@@ -136,6 +136,7 @@ def Mform(request):
             return redirect('bmovies')
         else:
             item = form.save(commit=False)
+            item.user= request.user
             item.save()
             return redirect('bmovies')
     else:
@@ -158,6 +159,7 @@ def Tform(request):
                 return redirect('btvshows')
             else:
                 item = form.save(commit=False)
+                item.user= request.user
                 item.save()
                 return redirect('btvshows')
         else:
@@ -210,3 +212,33 @@ def BdeleteTvshow(request, btvshow_id):
         'tvshowgists' : tvshowgists,
     }
     return render(request,'bollywood/deletetvshow.html', context)
+
+def bmovieDelete(request, bmovie_id):
+    deleteMovie = get_object_or_404(Movies, id=bmovie_id)
+    if request.method == 'POST':
+        if request.POST.get('comment') == 'Yes':
+            if deleteMovie.user == request.user:
+                deleteMovie.delete()
+                messages.success(request,'your movie thread was deleted successfully')
+                return redirect('bmovies')
+            else:
+                messages.error(request,'this movie could not be deleted because you werent the creator')
+    context = {
+        'deleteMovie' : deleteMovie,
+    }
+    return render(request,'bollywood/delMovie.html', context)
+
+def bTvshowThreadDelete(request, btvshow_id):
+    deletetvshow = get_object_or_404(Tvshows, id=btvshow_id)
+    if request.method == 'POST':
+        if request.POST.get('comment') == 'Yes':
+            if deletetvshow.user == request.user:
+                deletetvshow.delete()
+                messages.success(request,'your tvshow thread was deleted successfully')
+                return redirect('btvshows')
+            else:
+                messages.error(request,'this tvshow could not be deleted because you werent the creator')
+    context = {
+        'deletetvshow' : deletetvshow,
+    }
+    return render(request,'bollywood/deltvshow.html', context)

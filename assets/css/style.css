@@ -257,6 +257,28 @@ button{
 	background-color: white;
 	right: 0;
 }
+#delete{
+	text-align: left;	
+	color: #618BA0;
+	z-index: -4;
+}
+#delete-question{
+	text-align: left;
+	z-index: -4;
+}
+#delete-div{
+	text-align: left;
+	position: absolute;
+	z-index: -40;
+	top: 200px;
+}
+#answer-div{
+	text-align: left;
+	position: relative;
+	z-index: -40;
+	width: 100%;
+}
+
 
 	
 

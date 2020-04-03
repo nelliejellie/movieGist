@@ -11,4 +11,6 @@ urlpatterns = [
     path('nmovies/Mform',views.Mform, name='Mform'),
     path('nmovies/<int:nmovie_id>/delete',views.Ndelete, name='ndelete'),
     path('ntvshows/<int:ntvshow_id>/deletetvshow',views.NdeleteTvshow, name='ndeletetvshow'),
+    path('ntvshows/<int:ntvshow_id>/deletetvshowthread',views.nTvshowThreadDelete, name='nTvshowThreadDelete'),
+    path('nmovies/<int:nmovie_id>/deletemoviethread',views.nmovieDelete, name='nmoviesdelete'),
 ]
