@@ -35,7 +35,7 @@
 			<a href="{% url 'Mform' %}" id="">Create Movie Thread</a>
 		</li>
 			<li>
-				<li><a href="{% url 'index' %}" id="login">welcome, {{ user.username }}(Dashboard)</a></li>
+				<li><a href="{% url 'index' %}" id="login">welcome, {{ user.username }}</a></li>
 				<li style="background-color:#e2d3d3;">
 					<a href="javascript:{$('#logout').submit()}" style="">logout</a>
 					<form id="logout" method="POST" action="{% url 'logout' %}">
@@ -60,7 +60,7 @@
         {% if user.is_authenticated %}
 		<li ><a href="{% url 'Mform' %}" id="">createMovieThread</a></li>
 			<li>
-				<li><a href="{% url 'index' %}" id="login">{{ user.username }}(Dashboard)</a></li>
+				<li><a href="{% url 'index' %}" id="login">{{ user.username }}</a></li>
 			</li>
         {% else %}
         <li ><a href="{% url 'login' %}" id="">createMovieThread</a></li>
@@ -95,6 +95,9 @@
                         {{movie.description}}
                     </p>
                     <a href="{% url 'nmovie' movie.id  %}"><button class="btn btn-success" name="like" value="">View Comments</button></a>
+                    {% if user.is_authenticated %}
+                    <a href="{% url 'nmovieDelete' movie.id  %}"><img src="{% static 'img/delete.png' %}" alt='delete' style="width: 30px;height: 30px" title="delete"></a>
+                    {% endif %}
                 </div>
             </div>
             {% endfor %}
@@ -102,11 +105,11 @@
     </div>
     <div  id="pagination">
         <nav aria-label="Page navigation example">
-            {% if myelectronics.has_other_pages %}
+            {% if movies.has_other_pages %}
                 <ul class="pagination">
-                {% if myelectronics.has_previous %}
+                {% if movies.has_previous %}
                 <li class="page-item">
-                    <a class="page-link" href="?page={{electronics.previous_page_number}}" aria-label="Previous">
+                    <a class="page-link" href="?page={{movies.previous_page_number}}" aria-label="Previous">
                     <span aria-hidden="true">&laquo;</span>
                     </a>
                 </li>
@@ -118,8 +121,8 @@
                     </a>
                 </li>
                 {% endif %}
-                {% for i in myelectronics.paginator.page_range %}
-                    {% if myelectronics.number == i %}
+                {% for i in movies.paginator.page_range %}
+                    {% if movies.number == i %}
                         <li class="page-item"><a class="page-link" >{{i}}</a></li>
                     {% else %}
                         <li class="page-item"><a class="page-link" href="?page={{i}}">{{i}}</a></li>

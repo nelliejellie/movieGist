@@ -11,8 +11,8 @@ from django.db.models import F
 
 # Create your views here.
 def hmovies(request):
-    movies = Movies.objects.all()
-    paginator = Paginator(movies, 10)
+    movies = Movies.objects.order_by('-date')
+    paginator = Paginator(movies, 30)
     page = request.GET.get('page')
     paged_movies = paginator.get_page(page)
     context = {
@@ -22,7 +22,7 @@ def hmovies(request):
 
 def htvshows(request):
     tvshows = Tvshows.objects.order_by('-date')
-    paginator = Paginator(tvshows, 10)
+    paginator = Paginator(tvshows, 30)
     page = request.GET.get('page')
     paged_tvshows = paginator.get_page(page)
     context = {
@@ -135,12 +135,14 @@ def Mform(request):
         name = form.cleaned_data['name']
         if Movies.objects.filter(name=name).exists():
             return redirect('hmovies')
+            messages.error(request,'the movie exists already, try searching')
         else:
             item = form.save(commit=False)
+            item.user= request.user
             item.save()
             return redirect('hmovies')
     else:
-        messages.error(request,'the movie exists already, try searching')
+        messages.success(request,'success')
 
     return render(request, 'hollywood/movieform.html',context)
 
@@ -157,12 +159,14 @@ def Tform(request):
             name = form.cleaned_data['name']
             if Tvshows.objects.filter(name=name).exists():
                 return redirect('htvshows')
+                messages.error(request,'the tvshow exists already, try searching')
             else:
                 item = form.save(commit=False)
+                item.user= request.user
                 item.save()
                 return redirect('htvshows')
         else:
-            messages.error(request,'the tvshow exists already, try searching')
+            messages.success(request,'success')
 
     return render(request, 'hollywood/tvshowform.html',context)
 
@@ -188,7 +192,7 @@ def delete(request, hmovie_id):
         'gists' : gists,
     }
     return render(request,'hollywood/delete.html', context)
-
+#for deleting comments
 def deleteTvshow(request, htvshow_id):
     tvshowgists = get_object_or_404(tvshowgist, id=htvshow_id)
     tvshow  = Tvshows.objects.filter(tvshowgist=tvshowgists)
@@ -211,3 +215,37 @@ def deleteTvshow(request, htvshow_id):
         'tvshowgists' : tvshowgists,
     }
     return render(request,'hollywood/deletetvshow.html', context)
+
+
+#for deleting movies
+def hmovieDelete(request, hmovie_id):
+    deleteMovie = get_object_or_404(Movies, id=hmovie_id)
+    if request.method == 'POST':
+        if request.POST.get('comment') == 'Yes':
+            if deleteMovie.user == request.user:
+                deleteMovie.delete()
+                messages.success(request,'your movie thread was deleted successfully')
+                return redirect('hmovies')
+            else:
+                messages.error(request,'this movie could not be deleted because you werent the creator')
+    context = {
+        'deleteMovie' : deleteMovie,
+    }
+    return render(request,'hollywood/delMovie.html', context)
+
+def hTvshowThreadDelete(request, htvshow_id):
+    deletetvshow = get_object_or_404(Tvshows, id=htvshow_id)
+    if request.method == 'POST':
+        if request.POST.get('comment') == 'Yes':
+            if deletetvshow.user == request.user:
+                deletetvshow.delete()
+                messages.success(request,'your tvshow thread was deleted successfully')
+                return redirect('htvshows')
+
+            else:
+                messages.error(request,'this tvshow could not be deleted because you werent the creator')
+    context = {
+        'deletetvshow' : deletetvshow,
+    }
+    return render(request,'hollywood/deltvshow.html', context)
+

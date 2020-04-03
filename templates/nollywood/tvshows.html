@@ -95,18 +95,21 @@
                         {{tvshow.description}}
                     </p>
                         <a href="{% url 'ntvshow' tvshow.id  %}"><button class="btn btn-success" name="like" value="">View Comments</button></a> <i></i>
-                </div>
+                        {% if user.is_authenticated %}
+                        <a href="{% url 'nTvshowThreadDelete' tvshow.id  %}"><img src="{% static 'img/delete.png' %}" alt='delete' style="width: 30px;height: 30px" title="delete"></a>
+                        {% endif %}
+                    </div>
             </div>
             {% endfor %}
         {% endif %}
     </div>
     <div  id="pagination">
         <nav aria-label="Page navigation example">
-            {% if myelectronics.has_other_pages %}
+            {% if tvshows.has_other_pages %}
                 <ul class="pagination">
-                {% if myelectronics.has_previous %}
+                {% if tvshows.has_previous %}
                 <li class="page-item">
-                    <a class="page-link" href="?page={{electronics.previous_page_number}}" aria-label="Previous">
+                    <a class="page-link" href="?page={{tvshows.previous_page_number}}" aria-label="Previous">
                     <span aria-hidden="true">&laquo;</span>
                     </a>
                 </li>
@@ -118,8 +121,8 @@
                     </a>
                 </li>
                 {% endif %}
-                {% for i in myelectronics.paginator.page_range %}
-                    {% if myelectronics.number == i %}
+                {% for i in tvshows.paginator.page_range %}
+                    {% if tvshows.number == i %}
                         <li class="page-item"><a class="page-link" >{{i}}</a></li>
                     {% else %}
                         <li class="page-item"><a class="page-link" href="?page={{i}}">{{i}}</a></li>

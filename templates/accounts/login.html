@@ -3,11 +3,30 @@
 
 <html>
 <head>
-	<title>Movie Gist</title>
+	<title>Movie Gist {% block title %} | Login {% endblock %}</title>
 	<link type="text/css" rel="stylesheet" href="{% static 'css/bootstrap.css' %}" />
 	<link type="text/css" rel="stylesheet" href="{% static 'css/style.css' %}" />
 	<link type="text/css" media="screen and (max-width: 700px)" rel="stylesheet" href="{% static 'css/style2.css' %}" />
 	<link type="text/css" media="screen and (min-width: 701px) and (max-width: 1200px)" rel="stylesheet" href="{% static 'css/style3.css' %}" />
+	<style>	
+		@media(max-width: 700px){
+			#logA{
+				font-size: 13px;
+			}
+		}
+		#logA{
+			position: absolute;
+			right: 15px;
+			bottom: 65px;
+			color: black;
+		}
+		#logB{
+			position: absolute;
+			right: 15px;
+			bottom: 40px;
+			color: black;
+		}
+	</style>
 </head>
 <body>
 	<!-- header -->
@@ -120,6 +139,8 @@
 			</div>
 			<button type="submit" class="btn btn-primary btn-lg">Login</button>
 		</form>
+		<a href="{% url 'register' %}" id="logA">Dont have an account? Register</a><br>
+		<a href="#" id="logB">forgot password?</a>
     </div>
 <footer style="top:100vh;">
 	<div class="row">
