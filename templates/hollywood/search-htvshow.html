@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<style>
+    @media(max-width: 720px){
+        img{
+            width: 200px;
+            height: 200px;
+            background-color: #e0d9d9;	
+            cursor: pointer;
+        }
+        a:hover{
+            background-color: none;
+        }
+        figCaption{
+            font-size: 20px;
+        }
+    }
+</style>
+<div style="position: absolute;top:220px;width: 40%;z-index:-10">
+    {% if btvshows %}
+        {% for tvshow in htvshows %}
+            <li style="list-style-type:none;width:100%">
+                <figure style="margin: 15px;">
+                    <img src="{{tvshow.image.url}}">
+                    <figcaption ><a href="{% url 'htvshow' tvshow.id  %}" style="text-align: left;">{{tvshow.name}}</a></figcaption>
+                </figure>
+            </li>
+        {% endfor %}
+    {% else %}
+        <h1 style="color: brown;"> No tvshow with that name</h1>
+    {% endif %}
+</div>
+{% endblock %}

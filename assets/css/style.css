@@ -276,7 +276,24 @@ button{
 	text-align: left;
 	position: relative;
 	z-index: -40;
-	width: 100%;
+	width: 40%;
+}
+#contactus-div{
+	width: 50%;
+	background-color: #49D32A;
+	margin: 30px;
+	height: 600px;
+	z-index: -1;
+	margin-top: 100px;
+}
+#exampleFormControlInput1{
+	width: 50%;
+}
+#exampleFormControlInput2{
+	width: 60%;
+}
+#exampleFormControlInput3{
+	width: 40%;
 }
 
 

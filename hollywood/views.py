@@ -121,7 +121,22 @@ def search(request):
         'hmovies': queryset_list,
         'values': request.GET
     }
-    return render(request, 'hollywood/search.html', context)
+    return render(request, 'hollywood/search-hmovie.html', context)
+
+def search_htvshow(request):
+    queryset_list = Tvshows.objects.order_by('-date')
+
+    if 'name' in request.GET:
+        name = request.GET['name']
+        if name:
+            queryset_list = queryset_list.filter(name__iexact=name)
+
+    context = {
+        'htvshows': queryset_list,
+        'values': request.GET
+    }
+    return render(request, 'hollywood/search-htvshow.html', context)
+
 
 
 def Mform(request):

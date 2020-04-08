@@ -121,7 +121,21 @@ def search(request):
         'nmovies': queryset_list,
         'values': request.GET
     }
-    return render(request, 'nollywood/search.html', context)
+    return render(request, 'nollywood/search-nmovie.html', context)
+
+def search_ntvshow(request):
+    queryset_list = Tvshows.objects.order_by('-date')
+
+    if 'name' in request.GET:
+        name = request.GET['name']
+        if name:
+            queryset_list = queryset_list.filter(name__iexact=name)
+
+    context = {
+        'ntvshows': queryset_list,
+        'values': request.GET
+    }
+    return render(request, 'nollywood/search-ntvshow.html', context)
 
 
 def Mform(request):
