@@ -121,7 +121,21 @@ def search(request):
         'bmovies': queryset_list,
         'values': request.GET
     }
-    return render(request, 'bollywood/search.html', context)
+    return render(request, 'bollywood/search-bmovie.html', context)
+
+def search_btvshow(request):
+    queryset_list = Tvshows.objects.order_by('-date')
+
+    if 'name' in request.GET:
+        name = request.GET['name']
+        if name:
+            queryset_list = queryset_list.filter(name__iexact=name)
+
+    context = {
+        'btvshows': queryset_list,
+        'values': request.GET
+    }
+    return render(request, 'hollywood/search-btvshow.html', context)
 
 def Mform(request):
     form = movieform(request.POST or None, request.FILES or None)

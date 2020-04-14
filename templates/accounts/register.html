@@ -58,27 +58,27 @@
 	</ul>
 	<!-- navbar -- mobile phones -->
 	<ul id="smallscreens">
-		<li >Menu
+		<li ><img src="{% static 'img/menu.png' %}" style="width:30px;height: 30px;">
 			<ul>
 				<li>
 					<a href="#" id="Hollywood-smallscreen">Hollywood</a>	
 					<ul id="ul-smallscreen1">
 						<li><a href="{% url 'hmovies' %}" >Movies</a></li>
-						<li><a href="#" >Tv series</a></li>
+						<li><a href="{% url 'htvshows' %}" >Tv series</a></li>
 					</ul>
 				</li>
 				<li>
 					<a href="#" id="Nollywood-smallscreen">Bollywood</a>
 					<ul id="ul-smallscreen2">
-						<li><a href="#" >Movies</a></li>
-						<li><a href="#" >Tv series</a></li>
+						<li><a href="{% url 'nmovies' %}" >Movies</a></li>
+						<li><a href="{% url 'ntvshows' %}" >Tv series</a></li>
 					</ul>
 				</li>
 				<li>
 					<a href="#" id="Bollywood-smallscreen">Nollywood</a>
 					<ul id="ul-smallscreen3">
-						<li><a href="#" >Movies</a></li>
-						<li><a href="#" >Tv series</a></li>
+						<li><a href="{% url 'bmovies' %}" >Movies</a></li>
+						<li><a href="{% url 'btvshows' %}" >Tv series</a></li>
 					</ul>
 				</li>
 				{% if user.is_authenticated %}

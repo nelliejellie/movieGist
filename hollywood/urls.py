@@ -2,7 +2,8 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('hollywood/search',views.search, name='search'),
+    path('hollywood/search-hmovie',views.search, name='search-hmovie'),
+    path('bollywood/search-htvshow',views.search_htvshow, name='search-htvshow'),
     path('hmovies/',views.hmovies, name='hmovies'),
     path('hmovies/<int:hmovie_id>/deletemoviethread',views.hmovieDelete, name='hmoviesdelete'),
     path('htvshows/',views.htvshows, name='htvshows'),

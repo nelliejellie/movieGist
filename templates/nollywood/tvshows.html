@@ -61,12 +61,14 @@
             <li ><a href="{% url 'Tform' %}" id="">createTvshowThread</a></li>
                 <li>
                     <li><a href="{% url 'index' %}" id="login">{{ user.username }}(Dashboard)</a></li>
+
                 </li>
             {% else %}
             <li ><a href="{% url 'login' %}" id="">createTvshowThread</a></li>
             <li>
                 <li><a href="{% url 'login' %}" id="login">Login</a></li>
                 <li><a href="{% url 'register' %}" id="reg" style="position: absolute;right:100px;">Register</a></li>
+
             </li>
             {% endif %}
         </ul>
