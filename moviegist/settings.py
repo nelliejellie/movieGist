@@ -152,3 +152,8 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER ='moviegist1@gmail.com'
 EMAIL_HOST_PASS = 'vxuksffmwzwwgeoo'
+
+try:
+    from .local_settings import *
+except ImportError:
+    pass
