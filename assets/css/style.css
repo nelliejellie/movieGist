@@ -295,7 +295,10 @@ button{
 #exampleFormControlInput3{
 	width: 40%;
 }
-
+.input{
+	width:300px;
+	padding: 5px;
+}
 
 	
 
