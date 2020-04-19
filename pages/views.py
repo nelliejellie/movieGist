@@ -24,7 +24,7 @@ def index(request):
         'bmovies':bmovies,
         'nmovies':nmovies,
         'htvshows' : htvshows,
-        'ntvshows' : htvshows,,
+        'ntvshows' : ntvshows,
         'btvshows' : htvshows,
     }
     return render(request, 'pages/index.html', context)
