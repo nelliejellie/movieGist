@@ -116,3 +116,19 @@ figcaption{
 #movie-img{
 	width: 329px;
 }
+#contactus-div{
+	width: 60%;
+	background-color: #49D32A;
+	margin: 30px;
+	height: 600px;
+	z-index: -1;
+	margin-top: 100px;
+}
+#input-gist{
+	position: absolute;
+	right: 100px;
+	height: 50px;
+	width: 650px;
+	border-radius: 5px;
+	padding: 10px;
+}

@@ -2,7 +2,7 @@
 {% load static %}
 <html>
 <head>
-	<title>Movie Gist</title>
+	<title>Movie Gist{% block title %} | Details {% endblock %}</title>
 	<link type="text/css" rel="stylesheet" href="{% static 'css/bootstrap.css' %}" />
 	<link type="text/css" rel="stylesheet" href="{% static 'css/style.css' %}" />
 	<link type="text/css" media="screen and (max-width: 700px)" rel="stylesheet" href="{% static 'css/style2.css' %}" />
@@ -128,9 +128,9 @@
 		{% else %}
 		<form  action="{% url 'login'   %}" id="chat" >
 			{% csrf_token %}
-			<div style="text-align: right;margin-right: 30px;"><input type="radio" name="movieGist" value="worth-seeing" id="gh"><i>Worth-seeing</i></div>
-			<div style="text-align: right;margin-right: 30px;"><input type="radio" name="movieGist" value="not-worth-seeing" id="gp"><i>Not-Worth-seeing</i></div>
-			<textarea   id="input-gist" placeholder="" id="textarea"  style="padding: 10px;" ></textarea>
+			<div style="text-align: right;margin-right: 30px;"><input type="radio" name="movieGist" value="worth-seeing" id="gh" required><i>Worth-seeing</i></div>
+			<div style="text-align: right;margin-right: 30px;"><input type="radio" name="movieGist" value="not-worth-seeing" id="gp" required><i>Not-Worth-seeing</i></div>
+			<textarea class="form-control " name="gist" id="input-gist" placeholder="Tell us what you think about this film" required></textarea>
 			<input type="submit" name="submit" class="btn btn-success btn-lg" value="gist" id="submit-chat">
 		</form>	
 		{% endif %}
