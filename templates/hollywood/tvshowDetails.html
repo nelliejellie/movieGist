@@ -2,7 +2,11 @@
 {% load static %}
 <html>
 <head>
-	<title>Movie Gist</title>
+	<meta charset="utf-8">
+	<meta name="MovieGist" content="search/create movie and tvshow threads and give honest opinons on the what you personally think about the contents, actors and producers">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="keywords" content="movies, tvshows, hollywood, bollywood, nollywood">
+	<title>Movie Gist {% block title %} | Details {% endblock %}</title>
 	<link type="text/css" rel="stylesheet" href="{% static 'css/bootstrap.css' %}" />
 	<link type="text/css" rel="stylesheet" href="{% static 'css/style.css' %}" />
 	<link type="text/css" media="screen and (max-width: 700px)" rel="stylesheet" href="{% static 'css/style2.css' %}" />
@@ -120,9 +124,9 @@
 		{% if user.is_authenticated %}
 		<form method="post" action="{% url 'htvshow' tvshow.id  %}" id="chat" enctype="multipart/form-data">
 			{% csrf_token %}
-			<div style="text-align: right;margin-right: 30px;"><input type="radio" name="movieGist" value="worth-seeing" id="gh"><i>Worth-seeing</i></div>
-			<div style="text-align: right;margin-right: 30px;"><input type="radio" name="movieGist" value="not-worth-seeing" id="gp"><i>Not-Worth-seeing</i></div>
-			<textarea  name="gist" id="input-gist" placeholder="" id="textarea" value="big things" style="padding: 10px;" ></textarea>
+			<div style="text-align: right;margin-right: 30px;"><input type="radio" name="movieGist" value="worth-seeing" id="gh" required><i>Worth-seeing</i></div>
+			<div style="text-align: right;margin-right: 30px;"><input type="radio" name="movieGist" value="not-worth-seeing" id="gp" required><i>Not-Worth-seeing</i></div>
+			<textarea class="form-control " name="gist" id="input-gist" placeholder="Tell us what you think about this film" required></textarea>
 			<input type="submit" name="submit" class="btn btn-success btn-lg" value="gist" id="submit-chat">
 		</form>	
 		{% else %}

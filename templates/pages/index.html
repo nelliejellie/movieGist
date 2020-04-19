@@ -54,36 +54,36 @@
 	</div>
 	<h1 id="bolly-h1">Bollywood</h1>
 	<div id="wrapper-bollywood">
-		<figure id="child">
-			<img src="">
-			<figcaption></figcaption>
-		</figure>
-		<figure id="child">
-			<img src="">
-			<figcaption></figcaption>
-		</figure>
-		<figure id="child">
-			<img src="">
-			<figcaption></figcaption>
-		</figure>
+		{% if bmovies %}
+			{% for movie in bmovies %}
+			<a href="{% url 'bmovie' movie.id %}">
+			<figure id="child">
+				<img src='{{movie.image.url}}'>
+				<figcaption>{{movie.name}}</figcaption>
+			</figure>
+			</a>
+			{% endfor %}
+		{% else %}
+		<h1>No  bollywood movies available</h1>
+		{% endif %}
 	</div>
 	<h1 id="nolly-h1">Nollywood</h1>
 	<div id="wrapper-nollywood">
-		<figure id="child">
-			<img src="">
-			<figcaption></figcaption>
-		</figure>
-		<figure id="child">
-			<img src="">
-			<figcaption></figcaption>
-		</figure>
-		<figure id="child">
-			<img src="">
-			<figcaption></figcaption>
-		</figure>
+		{% if nmovies %}
+			{% for movie in nmovies %}
+			<a href="{% url 'nmovie' movie.id %}">
+			<figure id="child">
+				<img src='{{movie.image.url}}'>
+				<figcaption>{{movie.name}}</figcaption>
+			</figure>
+			</a>
+			{% endfor %}
+		{% else %}
+		<h1>No  Nollywood movies available</h1>
+		{% endif %}
 	</div>
 	<footer>
-		<a href="{% url 'contact' %}" style="margin: 5px;">Contact us</a>
+		<a href="{% url 'contact' %}" style="margin: 5px;">Send us a message</a>
 	</footer>
 {% endblock %}
 	

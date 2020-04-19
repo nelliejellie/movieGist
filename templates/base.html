@@ -3,6 +3,10 @@
 
 <html>
 <head>
+	<meta charset="utf-8">
+	<meta name="MovieGist" content="search/create movie and tvshow threads and give honest opinons on the what you personally think about the contents, actors and producers">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="keywords" content="movies, tvshows, hollywood, bollywood, nollywood">
 	<title>Movie Gist {% block title %} | Home {% endblock %}</title>
 	<link type="text/css" rel="stylesheet" href="{% static 'css/bootstrap.css' %}" />
 	<link type="text/css" rel="stylesheet" href="{% static 'css/style.css' %}" />
@@ -10,37 +14,37 @@
 	<link type="text/css" media="screen and (min-width: 701px) and (max-width: 1200px)" rel="stylesheet" href="{% static 'css/style3.css' %}" />
 </head>
 <style>
-		@media(max-width: 720px){
-            #wrapper-hollywood{
-                top: 250px;
-			}
-			#wrapper-bollywood{
-                top: 490px;
-			}
-			#wrapper-nollywood{
-                top: 790px;
-			}
-			#holly-h1{
-				top: 200px;
-			}
-			#formsearch{
-				top: 130px;
-			}
-			#child{
-				width: 110px;
-				height: 110px;
-			}
-			img{
-				height: 110px;
-				width: 110px;
-			}
+	@media(max-width: 720px){
+		#wrapper-hollywood{
+			top: 250px;
 		}
-		@media(min-width: 721px and max-width: 900px;){
-			img{
-				height: 200px;
-				width: 200px;
-			}
+		#wrapper-bollywood{
+			top: 490px;
 		}
+		#wrapper-nollywood{
+			top: 790px;
+		}
+		#holly-h1{
+			top: 200px;
+		}
+		#formsearch{
+			top: 130px;
+		}
+		#child{
+			width: 110px;
+			height: 110px;
+		}
+		img{
+			height: 110px;
+			width: 110px;
+		}
+	}
+	@media(min-width: 721px and max-width: 900px;){
+		img{
+			height: 200px;
+			width: 200px;
+		}
+	}
 </style>
 <body>
 	<!-- header -->
@@ -147,9 +151,7 @@
 	</form>
 	<!-- movie images -->
 	{% block content %} 
-	<footer>
-		<a href="{% url 'contact' %}">Contact us</a>
-	</footer>
+	
 	{% endblock %}
 </body>
 
