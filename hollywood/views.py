@@ -115,7 +115,7 @@ def search(request):
     if 'name' in request.GET:
         name = request.GET['name']
         if name:
-            queryset_list = queryset_list.filter(name__iexact=name)
+            queryset_list = queryset_list.filter(name__icontains=name)
 
     context = {
         'hmovies': queryset_list,
@@ -129,7 +129,7 @@ def search_htvshow(request):
     if 'name' in request.GET:
         name = request.GET['name']
         if name:
-            queryset_list = queryset_list.filter(name__iexact=name)
+            queryset_list = queryset_list.filter(name__icontains=name)
 
     context = {
         'htvshows': queryset_list,

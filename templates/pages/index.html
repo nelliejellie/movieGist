@@ -64,7 +64,7 @@
 			</a>
 			{% endfor %}
 		{% else %}
-		<h1>No  bollywood movies available</h1>
+		<h1>No movies available</h1>
 		{% endif %}
 	</div>
 	<h1 id="nolly-h1">Nollywood</h1>
@@ -79,7 +79,7 @@
 			</a>
 			{% endfor %}
 		{% else %}
-		<h1>No  Nollywood movies available</h1>
+		<h1>No movies available</h1>
 		{% endif %}
 	</div>
 	<footer>
@@ -89,7 +89,7 @@
 	
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="script/jquery-3.4.1.min.js"></script>
-<script src="script/script.js"></script>
-<script src="script/bootstrap.bundle.js"></script>
+<script src="{% static  'script/jquery-3.4.1.min.js' %}"></script>
+<script src="{% static 'script/bootstrap.bundle.js' %}"></script>
+<script src="{% static 'script/script.js' %}"></script>
 </html>

@@ -73,7 +73,7 @@ def ntvshowLike(request):
     return HttpResponseRedirect(tvshowLike.get_absolute_url())
    
 def nmovie(request,nmovie_id):
-    movie = get_object_or_404(Movies, pk= hmovie_id)
+    movie = get_object_or_404(Movies, pk= nmovie_id)
     comment = gist.objects.filter(movie=movie)
     like = MovieLike.objects.filter(movie=movie)
     dislike = MovieDislike.objects.filter(movie=movie)
@@ -109,13 +109,13 @@ def nmovie(request,nmovie_id):
         'dislike':dislike
     }       
     return render(request,'nollywood/movieDetails.html', context)
-def search(request):
+def search_nmovies(request):
     queryset_list = Movies.objects.order_by('-date')
 
     if 'name' in request.GET:
         name = request.GET['name']
         if name:
-            queryset_list = queryset_list.filter(name__iexact=name)
+            queryset_list = queryset_list.filter(name__icontains=name)
 
     context = {
         'nmovies': queryset_list,
@@ -129,7 +129,7 @@ def search_ntvshow(request):
     if 'name' in request.GET:
         name = request.GET['name']
         if name:
-            queryset_list = queryset_list.filter(name__iexact=name)
+            queryset_list = queryset_list.filter(name__icontains=name)
 
     context = {
         'ntvshows': queryset_list,

@@ -195,6 +195,7 @@ footer{
 	position: absolute;
 	z-index: -1;
 	margin: 20px;
+	top: 200px;
 }
 i,p{
 	color: #f2eaea;
@@ -221,7 +222,7 @@ h1{
 }
 #chat-form{
 	position: fixed;
-	bottom:7vh;
+	bottom:5vh;
 	margin: 20px;
 	width: 100%;
 }

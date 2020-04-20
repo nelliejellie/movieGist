@@ -1,22 +1,28 @@
 /** function for displaying the hover menu on small devicesb **/
 $(function(){
+	$('#ul-smallscreen1').hide();
+
+	$('#ul-smallscreen2').hide();
+
+	$('#ul-smallscreen3').hide();
+
 	$('#Hollywood-smallscreen').click(function(){
-		$('#ul-smallscreen1').css({'display':'block'});
+		$('#ul-smallscreen1').hide(1000);
 	});
-	$('#Hollywood-smallscreen').dblclick(function(){
-		$('#ul-smallscreen1').css({'display':'none'});
+	$('#Hollywood-smallscreen').click(function(){
+		$('#ul-smallscreen1').show();
 	});
 	$('#Nollywood-smallscreen').click(function(){
-		$('#ul-smallscreen2').css({'display':'block'});
+		$('#ul-smallscreen2').hide(1000);
 	});
-	$('#Nollywood-smallscreen').dblclick(function(){
-		$('#ul-smallscreen2').css({'display':'none'});
+	$('#Nollywood-smallscreen').click(function(){
+		$('#ul-smallscreen2').show();
 	});
 	$('#Bollywood-smallscreen').click(function(){
-		$('#ul-smallscreen3').css({'display':'block'});
+		$('#ul-smallscreen3').hide(1000);
 	});
-	$('#Bollywood-smallscreen').dblclick(function(){
-		$('#ul-smallscreen2').css({'display':'none'});
+	$('#Bollywood-smallscreen').click(function(){
+		$('#ul-smallscreen3').show();
 	});
 	$('a').active(function(){
 		$(this).css({'#':'#'});
