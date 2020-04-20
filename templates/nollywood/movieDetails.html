@@ -65,7 +65,7 @@
 	</ul>
 	<!-- navbar -- mobile phones -->
 	<ul id="smallscreens">
-		<li ><a href="#" id="">Upload</a></li>	
+		<li ><a href="{% url 'nmovies' %}" id="">Back</a></li>	
 		{% if user.is_authenticated %}
 			<li>
 				<li><a href="{% url 'index' %}" id="login">welcome, {{ user.username }}</a></li>

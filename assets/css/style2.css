@@ -12,7 +12,7 @@ a{
 	text-align: center;
 }
 #ul-smallscreen1,#ul-smallscreen2,#ul-smallscreen3{
-	display: none;
+	display: block;
 }
 #wrapper-hollywood{
 	background-color: linear-gradient(to right,#0c0303,#282020);
@@ -22,8 +22,9 @@ a{
 	display: flex;
 	flex-direction: row;
 	z-index: -10;
-	justify-content: center;
+	justify-content: space-around;
 	flex-wrap: wrap;
+	margin-left: 5px;
 	
 }
 #wrapper-bollywood{
@@ -34,8 +35,9 @@ a{
 	display: flex;
 	flex-direction: row;
 	z-index: -10;
-	justify-content: center;
+	justify-content: space-around;
 	flex-wrap: wrap;
+	margin-left: 5px;
 	
 }
 #wrapper-nollywood{
@@ -46,13 +48,14 @@ a{
 	display: flex;
 	flex-direction: row;
 	z-index: -10;
-	justify-content: center;
+	justify-content: space-around;
 	flex-wrap: wrap;
+	margin-left: 5px;
 	
 }
 #child{
-	width: 100px;
-	height: 100px;
+	width: 110px;
+	height: 110px;
 	background-color: #e0d9d9;
 	margin: 10px;
 	color: red;	
@@ -89,13 +92,13 @@ a{
 #formsearch{
 	float: right;
 	position: absolute;
-	top: 110px;
+	top: 130px;
 	right: 0;
 	z-index: -2;
 }
 img{
-	height: 80px;
-	width: 100px;
+	height: 110px;
+	width: 110px;
 }
 figcaption{
 	font-size: 15px;
@@ -125,7 +128,7 @@ figcaption{
 	position: absolute;
 	right: 100px;
 	height: 50px;
-	width: 400px;
+	width: 350px;
 	border-radius: 5px;
 	padding: 10px;
 }
@@ -154,10 +157,10 @@ figcaption{
 	height: 200px;
 }
 #contactus-div{
-	width: 90%;
+	width: 95%;
 	background-color: #49D32A;
 	margin: 30px;
-	height: 500px;
+	height: 600px;
 	z-index: -1;
 	margin-top: 100px;
 }
@@ -180,5 +183,5 @@ footer{
 }
 ul li:hover ul{
 	display: block;	
-	height: 200px;
+	height: 100px;
 }

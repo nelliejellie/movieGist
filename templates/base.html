@@ -38,12 +38,18 @@
 			height: 110px;
 			width: 110px;
 		}
+		ul li:hover ul{
+			display: block;	
+			height: 100px;
+		}
 	}
 	@media(min-width: 721px and max-width: 900px;){
 		img{
 			height: 200px;
 			width: 200px;
+			width: 1fr 1fr 1fr;
 		}
+		
 	}
 </style>
 <body>
@@ -127,7 +133,6 @@
 						<input type="hidden">
 					</form>
 				</li>
-				<li><a href="{% url 'contact' %}" id="reg" style="position: absolute;right:100px;">Contact Us</a></li>
 				{% endif %}
 			</ul>
 		</li>
@@ -145,10 +150,6 @@
 	</ul>
 	</div>
 	<!-- search button -->
-	<form method="get" id="formsearch" style="margin: 5px;" >
-		<input type="search" name="searcher" placeholder="search movie" maxlength="20">
-		<input type="submit" name="submit" id="submit" value="search">
-	</form>
 	<!-- movie images -->
 	{% block content %} 
 	
@@ -161,35 +162,9 @@
 <script src="{% static 'script/script.js' %}"></script>
 <script>
 	/** function for displaying the hover menu on small devicesb **/
-$(function(){
-	$('#Hollywood-smallscreen').click(function(){
-		$('#ul-smallscreen1').css({'display':'block'});
-	});
-	$('#Hollywood-smallscreen').dblclick(function(){
-		$('#ul-smallscreen1').css({'display':'none'});
-	});
-	$('#Nollywood-smallscreen').click(function(){
-		$('#ul-smallscreen2').css({'display':'block'});
-	});
-	$('#Nollywood-smallscreen').dblclick(function(){
-		$('#ul-smallscreen2').css({'display':'none'});
-	});
-	$('#Bollywood-smallscreen').click(function(){
-		$('#ul-smallscreen3').css({'display':'block'});
-	});
-	$('#Bollywood-smallscreen').dblclick(function(){
-		$('#ul-smallscreen3').css({'display':'none'});
-	});
-	$('a').active(function(){
-		$(this).css({'#':'#'});
-	});
-	setTimeout(function(){
-		$('#message').fadeOut('slow');
-	}, 2000);
-	$('#like-button').click(function(){
-		$(this).attr({'class':'disabled'});
-	});
-});
+/** function for displaying the hover menu on small devicesb **/
+
+
 
 </script>
 </html>
