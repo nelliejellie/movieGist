@@ -24,6 +24,9 @@ $(function(){
 	$('#Bollywood-smallscreen').click(function(){
 		$('#ul-smallscreen3').show();
 	});
+	$('#burger-menu').click(function(){
+		$('#libby').slideToggle();
+	});
 	$('a').active(function(){
 		$(this).css({'#':'#'});
 	});
