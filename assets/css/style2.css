@@ -185,3 +185,10 @@ ul li:hover ul{
 	display: block;	
 	height: 100px;
 }
+#logA{
+	font-size: 13px;
+}
+#form-container{
+	width: 75%;
+	left: 10%;
+}

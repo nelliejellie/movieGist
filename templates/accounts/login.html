@@ -14,9 +14,7 @@
 	<link type="text/css" media="screen and (min-width: 701px) and (max-width: 1200px)" rel="stylesheet" href="{% static 'css/style3.css' %}" />
 	<style>	
 		@media(max-width: 700px){
-			#logA{
-				font-size: 13px;
-			}
+			
 		}
 		#logA{
 			position: absolute;
@@ -81,8 +79,8 @@
 	</ul>
 	<!-- navbar -- mobile phones -->
 	<ul id="smallscreens">
-		<li ><img src="{% static 'img/menu.png' %}" style="width:30px;height: 30px;">
-			<ul>
+		<li ><img src="{% static 'img/menu.png' %}" style="width:30px;height: 30px;" id="burger-menu">
+			<ul id="libby">
 				<li>
 					<a href="#" id="Hollywood-smallscreen">Hollywood</a>	
 					<ul id="ul-smallscreen1">
