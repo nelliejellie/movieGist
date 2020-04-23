@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 class Movies(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='hollywoodmoviesuser',null=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='hollywoodmoviesuser',null=True)
     name = models.CharField(max_length=100)
     image = models.ImageField(upload_to='photos/%Y/%m/%d/')
     description = models.TextField(max_length=300)
@@ -15,12 +15,13 @@ class Movies(models.Model):
     like = models.BooleanField(default=False)
     dislike = models.BooleanField(default=False)
     
+    
 
     def __str__(self):
         return self.name
 
 class Tvshows(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='hollywoodtvshowuser',null=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='hollywoodtvshowuser',null=True)
     name = models.CharField(max_length=100)
     image = models.ImageField(upload_to='photos/%Y/%m/%d/')
     description = models.TextField(max_length=300)
