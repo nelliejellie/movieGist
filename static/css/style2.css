@@ -192,3 +192,10 @@ ul li:hover ul{
 	width: 80%;
 	left: 10%;
 }
+#input-gist{
+	position: absolute;
+	right: 100px;
+	height: 50px;
+	width: 400px;
+	border-radius: 5px;
+}
