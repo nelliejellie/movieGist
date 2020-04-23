@@ -148,13 +148,14 @@ def Mform(request):
         name = form.cleaned_data['name']
         if Movies.objects.filter(name=name).exists():
             return redirect('bmovies')
+            messages.error(request,'the movie exists already, try searching')
         else:
             item = form.save(commit=False)
             item.user= request.user
             item.save()
             return redirect('bmovies')
     else:
-        messages.error(request,'the movie exists already, try searching')
+        print ('success')
 
     return render(request, 'bollywood/movieform.html',context)
 
@@ -171,13 +172,14 @@ def Tform(request):
             name = form.cleaned_data['name']
             if Tvshows.objects.filter(name=name).exists():
                 return redirect('btvshows')
+                messages.error(request,'the tvshow exists already, try searching')
             else:
                 item = form.save(commit=False)
                 item.user= request.user
                 item.save()
                 return redirect('btvshows')
         else:
-            messages.error(request,'the tvshow exists already, try searching')
+            print('success')
 
     return render(request, 'bollywood/tvshowform.html',context)
 
