@@ -300,6 +300,13 @@ button{
 	width:300px;
 	padding: 5px;
 }
+#movie-con-details{
+	position: absolute;
+	z-index: -1;
+	margin: 20px;
+	height: 300px;
+	top: 120px;
+}
 
 	
 
