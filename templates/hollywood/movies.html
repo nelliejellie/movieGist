@@ -97,7 +97,7 @@
                     <p >
                         {{movie.description}}
                     </p>
-                    <a href="{% url 'hmovie' movie.id  %}"><button class="btn btn-success" name="like" value="">View Comments</button></a>
+                    <a href="{% url 'hmovie' movie.id  %}"><button class="btn btn-success" name="like" value="">Add Comments</button></a>
                     {% if user.is_authenticated %}
                     <a href="{% url 'hmoviesdelete' movie.id  %}"><img src="{% static 'img/delete.png' %}" alt='delete' style="width: 30px;height: 30px" title="delete"></a>
                     {% endif %}		
