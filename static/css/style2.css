@@ -120,9 +120,9 @@ figcaption{
 #form-container{
 	position: absolute;
 	width: 70%;
-	left: 20%;
 	top: 20%;
 	z-index: -1;
+	margin: 0px;
 }
 #input-gist{
 	position: absolute;

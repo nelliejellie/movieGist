@@ -72,6 +72,7 @@
 		<li>
 			<li><a href="{% url 'login' %}" id="login">Login</a></li>
 			<li><a href="{% url 'register' %}" id="reg" style="position: absolute;right:100px;">Register</a></li>
+			
 		</li>
 		{% endif %}
 	</ul>
@@ -120,7 +121,9 @@
 		{% else %}
 		<li>
 			<li><a href="{% url 'login' %}" id="login">Login</a></li>
-			<li><a href="{% url 'register' %}" id="reg" style="position: absolute;right:100px;">Register</a></li>
+			<li><a href="{% url 'register' %}" id="reg" style="">Register</a></li>
+            <li><a href="{% url 'register' %}" id="reg1" style="">Reg</a></li>
+
 		</li>
 		{% endif %}
 	</ul>
