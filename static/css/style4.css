@@ -27,5 +27,19 @@ img{
 	right: 10px;
 }
 #form-container{
-	width: 100%;
+	width: 70%;
+	margin-left: 0px;
+}
+#reg{
+	position: absolute;
+	top: 60px;
+	right: 70px;
+	display: none;
+}
+
+#reg1{
+	position: absolute;
+	top: 60px;
+	right: 70px;
+	display: block;
 }

@@ -21,8 +21,9 @@
 		#logA{
 			position: absolute;
 			right: 15px;
-			bottom: 65px;
+			bottom: 50px;
 			color: black;
+			font-size: 30px;
 		}
 		#logB{
 			position: absolute;
@@ -122,13 +123,15 @@
 		{% else %}
 		<li>
 			<li><a href="{% url 'login' %}" id="login">Login</a></li>
-			<li><a href="{% url 'register' %}" id="reg" style="position: absolute;right:100px;">Register</a></li>
+			<li><a href="{% url 'register' %}" id="reg" style="">Register</a></li>
+			<li><a href="{% url 'register' %}" id="reg1" style="">Register</a></li>
+
 		</li>
 		{% endif %}
 	</ul>
 	</div>
 	<!-- movie images -->
-	<div class="container" id="form-container" style="background-color: white;">
+	<div  id="form-container" style="background-color: white;">
         <h5>login?</h5>
         {% include 'partials/_alerts.html' %}
         <form action="{% url 'login' %}" method="POST">
@@ -143,8 +146,8 @@
 			</div>
 			<button type="submit" class="btn btn-primary btn-lg">Login</button>
 		</form>
-		<a href="{% url 'register' %}" id="logA">Dont have an account? Register</a><br>
-		<a href="#" id="logB">forgot password?</a>
+		<a href="{% url 'register' %}" id="logA">Register?</a><br>
+		<a href="#" id="logB"></a>
     </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
