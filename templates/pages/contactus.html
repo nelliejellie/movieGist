@@ -2,11 +2,13 @@
 {% load static %}
 
 {% block content %}
-<div class="col" id="contactus-div">
+
+
+<div id="contactus-div">
     {% include 'partials/_alerts.html' %}
     <form action="" method="POST">
         {% csrf_token %}
-        <div class="form-group" style="z-index: -1;position: relative;">
+          <div class="form-group" >
             <label for="exampleFormControlInput1">Name</label>
             <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Full Name" name="fullname" required>
           </div>
@@ -21,11 +23,14 @@
           <div class="form-group">
             <label for="exampleFormControlInput1">Message</label>
           </div>
-          <textarea name="description" cols="41" rows="7"  required></textarea>
+          <textarea name="description" cols="41" rows="7" style="margin: 10px;" required></textarea>
           <div class="col-auto my-1" id="submit-contact">
             <button type="submit" class="btn btn-primary btn-lg" id="submit-button" name="submit">Send</button>
           </div>
+          
     </form>
+
+    
 </div>
 
 {% endblock %}

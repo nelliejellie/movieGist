@@ -6,11 +6,13 @@
     <meta name="MovieGist" content="search/create movie and tvshow threads and give honest opinons on the what you personally think about the contents, actors and producers">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keywords" content="movies, tvshows, hollywood, bollywood, nollywood">
-	<title>Movie Gist {% block title %} | Hollywood Tvshows List {% endblock %}</title>
+	<title>Movie Gist {% block title %} | Hollywood Movies List {% endblock %}</title>
 	<link type="text/css" rel="stylesheet" href="{% static 'css/bootstrap.css' %}" />
 	<link type="text/css" rel="stylesheet" href="{% static 'css/style.css' %}" />
 	<link type="text/css" media="screen and (max-width: 700px)" rel="stylesheet" href="{% static 'css/style2.css' %}" />
     <link type="text/css" media="screen and (min-width: 701px) and (max-width: 1200px)" rel="stylesheet" href="{% static 'css/style3.css' %}" />
+	<link type="text/css" media="screen and (min-width: 200px) and (max-width: 413px)" rel="stylesheet" href="{% static 'css/style4.css' %}" />
+
     <style>
         @media(max-width: 700px){
             #pagination{
@@ -64,7 +66,7 @@
         {% if user.is_authenticated %}
 		<li ><a href="{% url 'hMform' %}" id="" >createMovieThread</a></li>
 			<li>
-				<li><a href="{% url 'index' %}" id="login">{{ user.username }}</a></li>
+				<li><a href="{% url 'index' %}" id="login" >{{ user.username }}</a></li>
 			</li>
         {% else %}
         <li ><a href="{% url 'login' %}" id="">createMovieThread</a></li>
