@@ -17,7 +17,7 @@ a{
 #wrapper-hollywood{
 	background-color: linear-gradient(to right,#0c0303,#282020);
 	position: absolute;
-	top: 250px;
+	top: 200px;
 	width: 100%;
 	display: flex;
 	flex-direction: row;
@@ -80,7 +80,7 @@ a{
 	color:#ffbb00;
 	margin: 10px;
 	position: absolute;
-	top: 700px;
+	top: 750px;
 	z-index: -10;
 }
 #ll{
@@ -174,7 +174,7 @@ figcaption{
 	width: 40%;
 }
 footer{
-	background-color: #49d32a;
+	background-color: #ffbb00;
 	position: absolute;
 	top: 1100px;
 	width: 100%;

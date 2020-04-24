@@ -14,7 +14,7 @@ ul{
 	list-style-type:none;
 	height: 50px;
 	line-height: 50px;
-	background-color: #49d32a;
+	background-color: #ffbb00;
 	margin: 0;
 	padding: 0;
 }
@@ -184,7 +184,7 @@ figcaption{
 	margin-top: 40px;
 }
 footer{
-	background-color: #49d32a;
+	background-color: #ffbb00;
 	position: absolute;
 	top: 1500px;
 	width: 100%;
@@ -241,8 +241,10 @@ h1{
 	position: absolute;
 	width: 40%;
 	left: 20%;
-	top: 20%;
+	top: 30%;
 	z-index: -1;
+	background-color:#ffbb00;
+	margin:20px;
 }
 button{
 	margin: 7px;
@@ -281,11 +283,14 @@ button{
 }
 #contactus-div{
 	width: 50%;
-	background-color: #49D32A;
+	background-color: #ffbb00;
 	margin: 30px;
 	height: 600px;
 	z-index: -1;
 	margin-top: 100px;
+}
+.form-group{
+	margin: 10px;
 }
 #exampleFormControlInput1{
 	width: 50%;

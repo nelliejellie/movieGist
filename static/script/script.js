@@ -27,8 +27,8 @@ $(function(){
 	$('#burger-menu').click(function(){
 		$('#libby').slideToggle();
 	});
-	$('a').active(function(){
-		$(this).css({'#':'#'});
+	$('#cancel-button').click(function(){
+		$('#message').css({'display':'none'});
 	});
 	setTimeout(function(){
 		$('#message').fadeOut('slow');
