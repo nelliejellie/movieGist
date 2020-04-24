@@ -12,12 +12,12 @@ from django.contrib.auth.models import User
 
 # Create your views here.
 def index(request):
-    hmovies = Movies.objects.order_by('-date')
-    bmovies = bollyMov.objects.order_by('-date')
-    nmovies = nollyMov.objects.order_by('-date')
-    htvshows = Tvshows.objects.order_by('-date')
-    ntvshows = nollyTv.objects.order_by('-date')
-    btvshows = bollyTv.objects.order_by('-date')
+    hmovies = Movies.objects.order_by('-date')[:3]
+    bmovies = bollyMov.objects.order_by('-date')[:3]
+    nmovies = nollyMov.objects.order_by('-date')[:3]
+    htvshows = Tvshows.objects.order_by('-date')[:3]
+    ntvshows = nollyTv.objects.order_by('-date')[:3]
+    btvshows = bollyTv.objects.order_by('-date')[:3]
 
     context = {
         'hmovies':hmovies,
