@@ -52,7 +52,7 @@
 		</div>
 	</div>
 	<!-- movie  -->
-	<h1 id="holly-h1">Hollywood Movies</h1>
+	<h1 id="holly-h1"><a href="{% url 'hmovies' %}">Hollywood Movies</a></h1>
 	{% include 'partials/_alerts.html' %}
 	<div id="wrapper-hollywood">
 		{% if hmovies %}
@@ -68,7 +68,7 @@
 		<h1>No movies available</h1>
 		{% endif %}
 	</div>
-	<h1 id="bolly-h1">Bollywood & Asian Movies</h1>
+	<h1 id="bolly-h1"><a href="{% url 'bmovies' %}">Bollywood & Asian Movies</a></h1>
 	<div id="wrapper-bollywood">
 		{% if bmovies %}
 			{% for movie in bmovies %}
@@ -83,7 +83,7 @@
 		<h1>No movies available</h1>
 		{% endif %}
 	</div>
-	<h1 id="nolly-h1">Nollywood Movies</h1>
+	<h1 id="nolly-h1"><a href="{% url 'nmovies' %}">Nollywood Movies</a></h1>
 	<div id="wrapper-nollywood">
 		{% if nmovies %}
 			{% for movie in nmovies %}
@@ -100,7 +100,7 @@
 	</div>
 
 	<!-- tvshows -->
-    <h1 id="holly-h1-tvshow">Hollywood Tvshows</h1>
+    <h1 id="holly-h1-tvshow"><a href="{% url 'htvshows' %}">Hollywood Tvshows</a></h1>
 	{% include 'partials/_alerts.html' %}
 	<div id="wrapper-hollywood-tvshow">
 		{% if htvshows %}
@@ -116,7 +116,7 @@
 		<h1>No tvshows available</h1>
 		{% endif %}
 	</div>
-	<h1 id="bolly-h1-tvshow">Bollywood & Asian Tvshows</h1>
+	<h1 id="bolly-h1-tvshow"><a href="{% url 'btvshows' %}">Bollywood & Asian Tvshows</a></h1>
 	<div id="wrapper-bollywood-tvshow">
 		{% if btvshows %}
 			{% for tvshow in btvshows %}
@@ -131,7 +131,7 @@
 		<h1>No tvshows available</h1>
 		{% endif %}
 	</div>
-	<h1 id="nolly-h1-tvshow">Nollywood Tvshows</h1>
+	<h1 id="nolly-h1-tvshow"><a href="{% url 'ntvshows' %}">Nollywood Tvshows</a></h1>
 	<div id="wrapper-nollywood-tvshow">
 		{% if ntvshows %}
 			{% for tvshow in ntvshows %}
