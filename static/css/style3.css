@@ -17,7 +17,7 @@ a{
 #wrapper-hollywood{
 	background-color: linear-gradient(to right,#0c0303,#282020);
 	position: absolute;
-	top: 180px;
+	top: 780px;
 	width: 100%;
 	display: flex;
 	flex-direction: row;
@@ -29,7 +29,7 @@ a{
 #wrapper-bollywood{
 	background-color: linear-gradient(to right,#0c0303,#282020);
 	position: absolute;
-	top: 500px;
+	top: 1100px;
 	width: 100%;
 	display: flex;
 	flex-direction: row;
@@ -41,13 +41,55 @@ a{
 #wrapper-nollywood{
 	background-color: linear-gradient(to right,#0c0303,#282020);
 	position: absolute;
-	top: 800px;
+	top: 1420px;
 	width: 100%;
 	display: flex;
 	flex-direction: row;
 	z-index: -10;
 	justify-content: center;
 	flex-wrap: wrap;
+	
+}
+#wrapper-hollywood-tvshow{
+	background-color: linear-gradient(to right,#0c0303,#282020);
+	position: absolute;
+	top: 1780px;
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	z-index: -10;
+	justify-content: center;
+	flex-wrap: wrap;
+	margin: 20px;
+	
+
+	
+}
+#wrapper-bollywood-tvshow{
+	background-color: linear-gradient(to right,#0c0303,#282020);
+	position: absolute;
+	top: 2100px;
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	z-index: -10;
+	justify-content: center;
+	flex-wrap: wrap;
+	margin-top: 40px;
+	
+}
+#wrapper-nollywood-tvshow{
+	background-color: linear-gradient(to right,#0c0303,#282020);
+	position: absolute;
+	top: 2420px;
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	z-index: -10;
+	justify-content: center;
+	flex-wrap: wrap;
+	margin: 20px;
+	margin-top: 40px;
 	
 }
 #child{
@@ -62,7 +104,7 @@ a{
 	color:#ffbb00;
 	margin: 10px;
 	position: absolute;
-	top: 100px;
+	top: 700px;
 	z-index: -10;
 	text-align: center;
 }
@@ -70,15 +112,51 @@ a{
 	color:#ffbb00;
 	margin: 10px;
 	position: absolute;
-	top: 450px;
+	top: 1050px;
 	z-index: -10;
 }
 #nolly-h1{
 	color:#ffbb00;
 	margin: 10px;
 	position: absolute;
-	top: 750px;
+	top: 1380px;
 	z-index: -10;
+}
+#holly-h1-tvshow{
+	color:#ffbb00;
+	width: 100%;
+	margin: 20px;
+	position: absolute;
+	top: 1700px;
+	z-index: -10;
+	text-align: center;
+}
+#bolly-h1-tvshow{
+	color:#ffbb00;
+	width: 100%;
+	margin-top: 40px;
+	position: absolute;
+	top: 2020px;
+	z-index: -10;
+	text-align: center;
+}
+#nolly-h1-tvshow{
+	color:#ffbb00;
+	width: 100%;
+	margin: 20px;
+	position: absolute;
+	top: 2350px;
+	z-index: -10;
+	text-align: center;
+	margin-top: 40px;
+}
+footer{
+	background-color: #ffbb00;
+	position: absolute;
+	top: 3000px;
+	width: 100%;
+	height: 100px;
+	line-height: 100px;
 }
 #ll{
 	float: right;
@@ -109,7 +187,7 @@ figcaption{
 	color:#ffbb00;
 	margin: 10px;
 	position: absolute;
-	top: 120px;
+	top: 720px;
 	z-index: -10;
 	text-align: center;
 }

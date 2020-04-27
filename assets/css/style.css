@@ -14,7 +14,7 @@ ul{
 	list-style-type:none;
 	height: 50px;
 	line-height: 50px;
-	background-color: #49d32a;
+	background-color: #ffbb00;
 	margin: 0;
 	padding: 0;
 }
@@ -81,7 +81,7 @@ ul li ul li a:hover{
 #wrapper-hollywood{
 	background-color: linear-gradient(to right,#0c0303,#282020);
 	position: absolute;
-	top: 150px;
+	top: 750px;
 	width: 100%;
 	display: flex;
 	flex-direction: row;
@@ -95,7 +95,7 @@ ul li ul li a:hover{
 #wrapper-bollywood{
 	background-color: linear-gradient(to right,#0c0303,#282020);
 	position: absolute;
-	top: 600px;
+	top: 1200px;
 	width: 100%;
 	display: flex;
 	flex-direction: row;
@@ -108,7 +108,7 @@ ul li ul li a:hover{
 #wrapper-nollywood{
 	background-color: linear-gradient(to right,#0c0303,#282020);
 	position: absolute;
-	top: 1050px;
+	top: 1650px;
 	width: 100%;
 	display: flex;
 	flex-direction: row;
@@ -160,7 +160,7 @@ figcaption{
 	width: 100%;
 	margin: 20px;
 	position: absolute;
-	top: 100px;
+	top: 700px;
 	z-index: -10;
 	text-align: center;
 }
@@ -169,7 +169,7 @@ figcaption{
 	width: 100%;
 	margin-top: 40px;
 	position: absolute;
-	top: 550px;
+	top: 1150px;
 	z-index: -10;
 	text-align: center;
 }
@@ -178,15 +178,15 @@ figcaption{
 	width: 100%;
 	margin: 20px;
 	position: absolute;
-	top: 1000px;
+	top: 1600px;
 	z-index: -10;
 	text-align: center;
 	margin-top: 40px;
 }
 footer{
-	background-color: #49d32a;
+	background-color: #ffbb00;
 	position: absolute;
-	top: 1500px;
+	top: 2100px;
 	width: 100%;
 	height: 100px;
 	line-height: 100px;
@@ -241,8 +241,10 @@ h1{
 	position: absolute;
 	width: 40%;
 	left: 20%;
-	top: 20%;
+	top: 30%;
 	z-index: -1;
+	background-color:#ffbb00;
+	margin:20px;
 }
 button{
 	margin: 7px;
@@ -281,11 +283,14 @@ button{
 }
 #contactus-div{
 	width: 50%;
-	background-color: #49D32A;
+	background-color: #ffbb00;
 	margin: 30px;
 	height: 600px;
 	z-index: -1;
 	margin-top: 100px;
+}
+.form-group{
+	margin: 10px;
 }
 #exampleFormControlInput1{
 	width: 50%;
@@ -307,8 +312,70 @@ button{
 	height: 300px;
 	top: 120px;
 }
+#reg{
+	position: absolute;
+	right:100px;
+}
+#reg1{
+	display:none;
+}
+#video-slides{
+	width: 100%;
+	height: 600px;
+	background-color: #282020;
+	z-index: -1;
+	position: absolute;
+}
+#mini-navbar{
+	height: 100px;
+	background-color: #282020; 
+}
+#iframe-div{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-content: center;
+	flex-wrap: wrap;
+	background-color:  #282020;
+}
+iframe{
+	margin-top: 100px;
+}
+#video-button-click{
+	position: absolute;
+	top: 525px;
+}
+#video-button-click{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-content: center;
+	flex-wrap: wrap;
+	background-color:  #282020;
+	}
+#mini-navbar-list{
+	background-color: white;
+	height: 25px;
+	line-height: 25px;
 
-	
+}
+#contact{
+	text-align: center;
+	margin-left: 40%;
+	padding: 0px 10px 0px 10px;
+
+}
+#mini-navbar{
+	z-index: -1;
+	width: 100%;
+}
+#contact :hover{
+	height: 25px;
+}
+
+#howtouse :hover{
+	height: 25px;
+}	
 
 	
 

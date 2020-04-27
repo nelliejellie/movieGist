@@ -18,3 +18,76 @@ img{
 	color: red;	
 	cursor: pointer;
 }
+#bolly-h1{
+	font-size: 30px;
+}
+#login{
+	position: absolute;
+	top: 60px;
+	right: 10px;
+}
+#form-container{
+	width: 70%;
+	margin-left: 0px;
+}
+#reg{
+	position: absolute;
+	top: 60px;
+	right: 70px;
+	display: none;
+}
+
+#reg1{
+	position: absolute;
+	top: 60px;
+	right: 70px;
+	display: block;
+}
+#wrapper-hollywood{
+	background-color: linear-gradient(to right,#0c0303,#282020);
+	position: absolute;
+	top: 800px;
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	z-index: -10;
+	justify-content: space-around;
+	flex-wrap: wrap;
+	margin-left: 5px;
+	
+}
+#wrapper-bollywood{
+	background-color: linear-gradient(to right,#0c0303,#282020);
+	position: absolute;
+	top: 1090px;
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	z-index: -10;
+	justify-content: space-around;
+	flex-wrap: wrap;
+	margin-left: 5px;
+	
+}
+#wrapper-nollywood{
+	background-color: linear-gradient(to right,#0c0303,#282020);
+	position: absolute;
+	top: 1390px;
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	z-index: -10;
+	justify-content: space-around;
+	flex-wrap: wrap;
+	margin-left: 5px;
+	
+}
+#view-clip-4{
+	display: none;
+}
+#contact{
+	text-align: center;
+	margin-left: 20%;
+	padding: 0px 10px 0px 10px;
+	
+}

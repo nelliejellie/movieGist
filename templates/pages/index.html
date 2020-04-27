@@ -3,9 +3,6 @@
 
 	{% block content %}
 	<style>
-		@media(max-width: 720px){
-            
-		}
 		@media(min-width: 721px) and (max-width: 1100px){
 			img{
 				height: 200px;
@@ -13,8 +10,49 @@
 			}
 		}
 	</style>
-	<!-- movie images -->
-	<h1 id="holly-h1">Hollywood</h1>
+	<!-- slide for videos -->
+	<div id="video-slides">
+		<div id="mini-navbar" >
+			<ul  id="mini-navbar-list">
+				<li id="contact"><a href="{% url 'contact' %}" >Contact us</a></li>
+				<li id="howtouse"><a href="{% url 'howtouse' %}">HowToUse</a></li>
+			</ul>
+
+		</div>
+		<div id="iframe-div">
+			{% if myclip %}
+			{% for clip in myclip %}
+			<iframe width="560" height="315" src="https://www.youtube.com/embed/{{clip.link}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" id="frame1" allowfullscreen></iframe>
+			{% endfor %}
+			{% endif %}
+			{% if myclip1 %}
+			{% for clip in myclip1 %}
+			<iframe width="560" height="315" src="https://www.youtube.com/embed/{{clip.link}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" id="frame2" allowfullscreen></iframe>
+			{% endfor %}
+			{% endif %}
+			{% if myclip2 %}
+			{% for clip in myclip2 %}
+			<iframe width="560" height="315" src="https://www.youtube.com/embed/{{clip.link}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" id="frame3" allowfullscreen></iframe>
+			{% endfor %}
+			{% endif %}
+			{% if myclip3 %}
+			{% for clip in myclip3 %}
+			<iframe width="560" height="315" src="https://www.youtube.com/embed/{{clip.link}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" id="frame4" allowfullscreen></iframe>
+			{% endfor %}
+			{% endif %}
+
+			<div id="video-button-click">
+				<button id="view-clip-1" class="btn-lg btn-secondary">clip 1</button>
+				<button id="view-clip-2" class="btn-lg btn-secondary">clip 2</button>
+				<button id="view-clip-3" class="btn-lg btn-secondary">clip 3</button>
+				<button id="view-clip-4" class="btn-lg btn-secondary">clip 4</button>
+
+
+			</div>
+		</div>
+	</div>
+	<!-- movie  -->
+	<h1 id="holly-h1">Hollywood Movies</h1>
 	{% include 'partials/_alerts.html' %}
 	<div id="wrapper-hollywood">
 		{% if hmovies %}
@@ -30,7 +68,7 @@
 		<h1>No movies available</h1>
 		{% endif %}
 	</div>
-	<h1 id="bolly-h1">Bollywood & Asian</h1>
+	<h1 id="bolly-h1">Bollywood & Asian Movies</h1>
 	<div id="wrapper-bollywood">
 		{% if bmovies %}
 			{% for movie in bmovies %}
@@ -45,7 +83,7 @@
 		<h1>No movies available</h1>
 		{% endif %}
 	</div>
-	<h1 id="nolly-h1">Nollywood</h1>
+	<h1 id="nolly-h1">Nollywood Movies</h1>
 	<div id="wrapper-nollywood">
 		{% if nmovies %}
 			{% for movie in nmovies %}
@@ -60,8 +98,56 @@
 		<h1>No movies available</h1>
 		{% endif %}
 	</div>
+
+	<!-- tvshows -->
+    <h1 id="holly-h1-tvshow">Hollywood Tvshows</h1>
+	{% include 'partials/_alerts.html' %}
+	<div id="wrapper-hollywood-tvshow">
+		{% if htvshows %}
+			{% for tvshow in htvshows %}
+			<a href="{% url 'htvshow' tvshow.id %}">
+			<figure id="child">
+				<img src='{{tvshow.image.url}}'>
+				<figcaption>{{tvshow.name}}</figcaption>
+			</figure>
+			</a>
+			{% endfor %}
+		{% else %}
+		<h1>No tvshows available</h1>
+		{% endif %}
+	</div>
+	<h1 id="bolly-h1-tvshow">Bollywood & Asian Tvshows</h1>
+	<div id="wrapper-bollywood-tvshow">
+		{% if btvshows %}
+			{% for tvshow in btvshows %}
+			<a href="{% url 'btvshow' tvshow.id %}">
+			<figure id="child">
+				<img src='{{tvshow.image.url}}'>
+				<figcaption>{{tvshow.name}}</figcaption>
+			</figure>
+			</a>
+			{% endfor %}
+		{% else %}
+		<h1>No tvshows available</h1>
+		{% endif %}
+	</div>
+	<h1 id="nolly-h1-tvshow">Nollywood Tvshows</h1>
+	<div id="wrapper-nollywood-tvshow">
+		{% if ntvshows %}
+			{% for tvshow in ntvshows %}
+			<a href="{% url 'ntvshow' tvshow.id %}">
+			<figure id="child">
+				<img src='{{tvshow.image.url}}'>
+				<figcaption>{{tvshow.name}}</figcaption>
+			</figure>
+			</a>
+			{% endfor %}
+		{% else %}
+		<h1>No tvshows available</h1>
+		{% endif %}
+	</div>
 	<footer>
-		<a href="{% url 'contact' %}" style="margin: 5px;">Send us a message</a>
+			<span style="margin-right: 30px;;">&COPY; moviegist</span> <a href="{% url 'contact' %}" style="margin-right: 55px;">send us a message</a>
 	</footer>
 {% endblock %}
 	

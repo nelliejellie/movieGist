@@ -6,6 +6,54 @@ $(function(){
 
 	$('#ul-smallscreen3').hide();
 
+	//the video slide
+	$('#frame2').hide();
+	$('#frame3').hide();
+	$('#frame4').hide();
+
+
+
+	$('#view-clip-2').click(function(){
+		$('#frame1').hide();
+		$('#frame2').show();
+		$('#frame3').hide();
+		$('#frame4').hide();
+		$(this).attr({'class':'btn-success btn-lg'});
+
+
+
+	})
+	$('#view-clip-1').click(function(){
+		$('#frame1').show();
+		$('#frame2').hide();
+		$('#frame3').hide();
+		$('#frame4').hide();
+		$(this).attr({'class':'btn-success btn-lg'});
+		
+
+	})
+	$('#view-clip-3').click(function(){
+		$('#frame1').hide();
+		$('#frame2').hide();
+		$('#frame3').show();
+		$('#frame4').hide();
+		$(this).attr({'class':'btn-success btn-lg'});
+		
+
+	})
+
+	$('#view-clip-4').click(function(){
+		$('#frame1').hide();
+		$('#frame2').hide();
+		$('#frame3').hide();
+		$('#frame4').show();
+		$(this).attr({'class':'btn-success btn-lg'});
+		
+
+	});
+
+	//the video slide end
+
 	$('#Hollywood-smallscreen').click(function(){
 		$('#ul-smallscreen1').hide(1000);
 	});
@@ -27,8 +75,8 @@ $(function(){
 	$('#burger-menu').click(function(){
 		$('#libby').slideToggle();
 	});
-	$('a').active(function(){
-		$(this).css({'#':'#'});
+	$('#cancel-button').click(function(){
+		$('#message').css({'display':'none'});
 	});
 	setTimeout(function(){
 		$('#message').fadeOut('slow');
