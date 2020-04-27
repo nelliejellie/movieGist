@@ -10,7 +10,7 @@
 	<title>Movie Gist {% block title %} | Home {% endblock %}</title>
 	<link type="text/css" rel="stylesheet" href="{% static 'css/bootstrap.css' %}" />
 	<link type="text/css" rel="stylesheet" href="{% static 'css/style.css' %}" />
-	<link type="text/css" media="screen and (max-width: 414px)" rel="stylesheet" href="{% static 'css/style2.css' %}" />
+	<link type="text/css" media="screen and (min-width: 414px) and (max-width: 700px)" rel="stylesheet" href="{% static 'css/style2.css' %}" />
 	<link type="text/css" media="screen and (min-width: 701px) and (max-width: 1200px)" rel="stylesheet" href="{% static 'css/style3.css' %}" />
 	<link type="text/css" media="screen and (min-width: 200px) and (max-width: 413px)" rel="stylesheet" href="{% static 'css/style4.css' %}" />
 	
@@ -101,7 +101,6 @@
 						<li><a href="{% url 'ntvshows' %}" style="color: #b55353;">Tv series</a></li>
 					</ul>
 				</li>
-				<li><a href="{% url 'contact' %}" id="reg" >ContactUs</a></li>
 				{% if user.is_authenticated %}
 				<li>
 					<a href="javascript:{$('#logout').submit()}" style="">logout</a>
@@ -115,8 +114,7 @@
 		</li>
 		{% if user.is_authenticated %}
 			<li>
-				<li><a href="{% url 'index' %}" id="login">welcome, {{ user.username }}</a></li>
-				
+				<li><a href="{% url 'index' %}" id="login">welcome, {{ user.username }}</a></li>				
 			</li>
 		{% else %}
 		<li>

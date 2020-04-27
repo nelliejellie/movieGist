@@ -68,8 +68,7 @@ ul li:hover ul{
 
 ul li ul li a:hover{
 	background-color: #49d32a;
-	margin: 0;
-	
+	margin: 0;	
 }
 
 #smallscreens{
@@ -81,7 +80,7 @@ ul li ul li a:hover{
 #wrapper-hollywood{
 	background-color: linear-gradient(to right,#0c0303,#282020);
 	position: absolute;
-	top: 150px;
+	top: 750px;
 	width: 100%;
 	display: flex;
 	flex-direction: row;
@@ -95,7 +94,7 @@ ul li ul li a:hover{
 #wrapper-bollywood{
 	background-color: linear-gradient(to right,#0c0303,#282020);
 	position: absolute;
-	top: 600px;
+	top: 1300px;
 	width: 100%;
 	display: flex;
 	flex-direction: row;
@@ -108,7 +107,49 @@ ul li ul li a:hover{
 #wrapper-nollywood{
 	background-color: linear-gradient(to right,#0c0303,#282020);
 	position: absolute;
-	top: 1050px;
+	top: 1850px;
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	z-index: -10;
+	justify-content: center;
+	flex-wrap: wrap;
+	margin: 20px;
+	margin-top: 40px;
+	
+}
+#wrapper-hollywood-tvshow{
+	background-color: linear-gradient(to right,#0c0303,#282020);
+	position: absolute;
+	top: 2400px;
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	z-index: -10;
+	justify-content: center;
+	flex-wrap: wrap;
+	margin: 20px;
+	
+
+	
+}
+#wrapper-bollywood-tvshow{
+	background-color: linear-gradient(to right,#0c0303,#282020);
+	position: absolute;
+	top: 2950px;
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	z-index: -10;
+	justify-content: center;
+	flex-wrap: wrap;
+	margin-top: 40px;
+	
+}
+#wrapper-nollywood-tvshow{
+	background-color: linear-gradient(to right,#0c0303,#282020);
+	position: absolute;
+	top: 3530px;
 	width: 100%;
 	display: flex;
 	flex-direction: row;
@@ -160,7 +201,7 @@ figcaption{
 	width: 100%;
 	margin: 20px;
 	position: absolute;
-	top: 100px;
+	top: 700px;
 	z-index: -10;
 	text-align: center;
 }
@@ -169,7 +210,7 @@ figcaption{
 	width: 100%;
 	margin-top: 40px;
 	position: absolute;
-	top: 550px;
+	top: 1200px;
 	z-index: -10;
 	text-align: center;
 }
@@ -178,7 +219,35 @@ figcaption{
 	width: 100%;
 	margin: 20px;
 	position: absolute;
-	top: 1000px;
+	top: 1750px;
+	z-index: -10;
+	text-align: center;
+	margin-top: 40px;
+}
+#holly-h1-tvshow{
+	color:#ffbb00;
+	width: 100%;
+	margin: 20px;
+	position: absolute;
+	top: 2320px;
+	z-index: -10;
+	text-align: center;
+}
+#bolly-h1-tvshow{
+	color:#ffbb00;
+	width: 100%;
+	margin-top: 40px;
+	position: absolute;
+	top: 2880px;
+	z-index: -10;
+	text-align: center;
+}
+#nolly-h1-tvshow{
+	color:#ffbb00;
+	width: 100%;
+	margin: 20px;
+	position: absolute;
+	top: 3450px;
 	z-index: -10;
 	text-align: center;
 	margin-top: 40px;
@@ -186,7 +255,7 @@ figcaption{
 footer{
 	background-color: #ffbb00;
 	position: absolute;
-	top: 1500px;
+	top: 4050px;
 	width: 100%;
 	height: 100px;
 	line-height: 100px;
@@ -254,6 +323,9 @@ button{
 	height: 800px;
 	overflow: auto;
 }
+figcaption{
+	font-size: 30px;
+}
 #pagination{
 	bottom:0vh;
 	position:fixed;
@@ -319,8 +391,70 @@ button{
 #reg1{
 	display:none;
 }
-	
+#video-slides{
+	width: 100%;
+	height: 600px;
+	background-color: #282020;
+	z-index: -1;
+	position: absolute;
+}
+#mini-navbar{
+	height: 100px;
+	background-color: #282020; 
+}
+#iframe-div{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-content: center;
+	flex-wrap: wrap;
+	background-color:  #282020;
+}
+iframe{
+	margin-top: 100px;
+}
+#video-button-click{
+	position: absolute;
+	top: 525px;
+}
+#video-button-click{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-content: center;
+	flex-wrap: wrap;
+	background-color:  #282020;
+	}
+#mini-navbar-list{
+	background-color: white;
+	height: 25px;
+	line-height: 25px;
 
+}
+#contact{
+	text-align: center;
+	margin-left: 40%;
+	padding: 0px 10px 0px 10px;
+
+}
+#mini-navbar{
+	z-index: -1;
+	width: 100%;
+}
+#contact :hover{
+	height: 25px;
+}
+
+#howtouse :hover{
+	height: 25px;
+}	
+#howtouse-div{
+	width: 100%;
+	height: 700px;
+	z-index: -1;
+	margin-top: 100px;
+	font-optical-sizing: 70px;
+}
 	
 
 

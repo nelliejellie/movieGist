@@ -7,18 +7,30 @@ ul{
 	padding: 0;
 }
 img{
-	height: 80px;
-	width: 80px;
+	height: 75px;
+	width: 75px;
+}
+#bigscreens{
+	display: none;
+}
+#smallscreens{
+	display: block;
 }
 #child{
-	width:80px;
-	height: 80px;
+	width:75px;
+	height: 75px;
 	background-color: #e0d9d9;
-	margin-right: 30px;
+	margin-right: 20px;
 	color: red;	
 	cursor: pointer;
 }
 #bolly-h1{
+	font-size: 25px;
+}
+#holly-h1{
+	font-size: 30px;
+}
+#nolly-h1{
 	font-size: 30px;
 }
 #login{
@@ -42,4 +54,174 @@ img{
 	top: 60px;
 	right: 70px;
 	display: block;
+}
+#bolly-h1{
+	color:#ffbb00;
+	margin: 10px;
+	position: absolute;
+	top: 1050px;
+	z-index: -10;
+}
+#nolly-h1{
+	color:#ffbb00;
+	margin: 10px;
+	position: absolute;
+	top: 1350px;
+	z-index: -10;
+}
+#wrapper-hollywood{
+	background-color: linear-gradient(to right,#0c0303,#282020);
+	position: absolute;
+	top: 800px;
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	z-index: -10;
+	justify-content: space-around;
+	flex-wrap: wrap;
+	margin-left: 5px;
+	
+}
+#wrapper-bollywood{
+	background-color: linear-gradient(to right,#0c0303,#282020);
+	position: absolute;
+	top: 1090px;
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	z-index: -10;
+	justify-content: space-around;
+	flex-wrap: wrap;
+	margin-left: 5px;
+	
+}
+#wrapper-nollywood{
+	background-color: linear-gradient(to right,#0c0303,#282020);
+	position: absolute;
+	top: 1390px;
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	z-index: -10;
+	justify-content: space-around;
+	flex-wrap: wrap;
+	margin-left: 5px;
+	
+}
+#holly-h1-tvshow{
+	color:#ffbb00;
+	width: 100%;
+	margin: 20px;
+	position: absolute;
+	top: 1623px;
+	z-index: -10;
+	text-align: center;
+	font-size: 30px;
+
+}
+#wrapper-hollywood-tvshow{
+	background-color: linear-gradient(to right,#0c0303,#282020);
+	position: absolute;
+	top: 1703px;
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	z-index: -10;
+	justify-content: space-around;
+	flex-wrap: wrap;
+	margin-right: 5px;
+	margin: 10px;
+	
+
+	
+}
+#wrapper-bollywood-tvshow{
+	background-color: linear-gradient(to right,#0c0303,#282020);
+	position: absolute;
+	top: 1983px;
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	z-index: -10;
+	justify-content: space-around;
+	flex-wrap: wrap;
+	margin-top: 40px;
+	
+}
+#wrapper-nollywood-tvshow{
+	background-color: linear-gradient(to right,#0c0303,#282020);
+	position: absolute;
+	top: 2223px;
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	z-index: -10;
+	justify-content: space-around;
+	flex-wrap: wrap;
+	margin: 20px;
+	margin-top: 40px;
+	
+}
+#bolly-h1-tvshow{
+	color:#ffbb00;
+	width: 100%;
+	margin-top: 40px;
+	position: absolute;
+	top: 1883px;
+	z-index: -10;
+	text-align: center;
+	font-size: 25px;
+
+}
+#nolly-h1-tvshow{
+	color:#ffbb00;
+	width: 100%;
+	margin: 20px;
+	position: absolute;
+	top: 2180px;
+	z-index: -10;
+	text-align: center;
+	margin-top: 40px;
+	font-size: 30px;
+
+}
+footer{
+	background-color: #ffbb00;
+	position: absolute;
+	top: 2800px;
+	width: 100%;
+	height: 100px;
+	line-height: 100px;
+}
+#contactus-div{
+	width: 100%;
+	background-color: #ffbb00;
+	margin:0;
+	height: 600px;
+	z-index: -1;
+	margin-top: 100px;
+}
+#view-clip-4{
+	display: none;
+}
+#contact{
+	text-align: center;
+	margin-left: 10%;
+	padding: 0px 10px 0px 10px;
+	
+}
+figcaption{
+	font-size: 20px;
+}
+ul li ul{
+	width: 110px;;
+}
+ul li ul li a:hover{
+	background-color: #49d32a;
+	margin: 0;	
+	width: 105px;
+}
+#howtouse {
+	width: 35px;
+	margin-right: 80px;
 }
